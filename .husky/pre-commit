@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# git add .husky/pre-commit
+echo "✨🌟🧚 벤창웹 4조 format and lint 진행 중... ✨🌟🧚"
+yarn lint:fix
+yarn format:fix

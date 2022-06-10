@@ -1,9 +1,7 @@
 module.exports = {
   arrowParens: 'avoid',
   bracketSpacing: true,
-  jsxBracketSameLine: false,
-  jsxSingleQuote: false,
-  printWidth: 100,
+  jsxSingleQuote: true,
   proseWrap: 'always',
   quoteProps: 'as-needed',
   semi: true,
@@ -11,4 +9,12 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'es5',
   useTabs: false,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 200
+      }
+    }
+  ]
 };
