@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "cross-env": "^7.0.3",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -21,7 +22,8 @@
     "lint:fix": "eslint --fix ./src",
     "format": "prettier --check ./src",
     "format:fix": "prettier --write ./src",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "local": "cross-env REACT_APP_API_URL=localhost react-scripts start"
   },
   "eslintConfig": {
     "extends": [
