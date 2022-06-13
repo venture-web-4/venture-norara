@@ -9,10 +9,20 @@ export const Wrapper = styled.div`
 `;
 
 export const TitleOuterWrapper = styled.div`
+  @keyframes fadeInUp {
+    from {
+      transform: translate3d(0, 40px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
   font-family: 'TTTogether';
   width: auto;
   display: flex;
   flex-direction: column;
+  animation: fadeInUp 2s ease;
 `;
 
 export const SubTitleWrapper = styled.div`

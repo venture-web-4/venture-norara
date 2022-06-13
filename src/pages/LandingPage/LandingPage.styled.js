@@ -1,6 +1,6 @@
-// 이미지 소스: https://www.mariomayhem.com/downloads/images/super_mario_3.php
-// 이미지 소스: https://greghub.github.io/coloron/public/svg/clouds.svg
-// 이미지 소스: https://codepen.io/josfabre/pen/OJOWdVE
+// img source: https://www.mariomayhem.com/downloads/images/super_mario_3.php
+// img source: https://greghub.github.io/coloron/public/svg/clouds.svg
+// img source: https://codepen.io/josfabre/pen/OJOWdVE
 
 import styled from 'styled-components';
 
@@ -55,14 +55,14 @@ export const Wrapper = styled.div`
   position: relative;
   padding-top: 70px;
   overflow: hidden;
-  background: linear-gradient(137deg, #c6e4e4, #84a6d5, #fecbb2, #f0f0f0);
+  background: linear-gradient(137deg, #c6e4e4, #84a6d5, #fc8d9c);
   background-size: 800% 800%;
   background-attachment: fixed;
 
-  -webkit-animation: wave 8s ease-in infinite;
-  -moz-animation: wave 8s ease-in infinite;
-  -o-animation: wave 8s ease-in infinite;
-  animation: wave 8s ease-in infinite;
+  -webkit-animation: wave 8s ease infinite;
+  -moz-animation: wave 8s ease infinite;
+  -o-animation: wave 8s ease infinite;
+  animation: wave 8s ease infinite;
 `;
 
 export const UpperClouds = styled.div`
@@ -100,7 +100,7 @@ export const LowerClouds = styled.div`
   width: 100vw;
   height: 150px;
   margin-top: 10px;
-  background: url(https://greghub.github.io/coloron/public/svg/clouds.svg);
+  background-image: url(https://greghub.github.io/coloron/public/svg/clouds.svg);
   background-position-x: 270px;
   animation: floating 4s ease infinite alternate-reverse;
   z-index: 10;
@@ -190,11 +190,23 @@ export const GreenPlantBlock = styled.div`
 `;
 
 export const MarioBlock = styled.div`
+  @keyframes jump {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(0, -15px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
   width: 40px;
   height: 60px;
   margin: 0 10px;
   background-image: url('../../../img/mario.gif');
   background-size: 40px 60px;
+  animation: jump 1s linear infinite alternate;
 `;
 
 export const RedPlantBlock = styled.div`
