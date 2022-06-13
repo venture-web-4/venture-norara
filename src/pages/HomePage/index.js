@@ -1,3 +1,9 @@
+import Footer from '../../components/Footer';
+
 export default function HomePage() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
 }
