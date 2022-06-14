@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import LandingPage from './pages/LandingPage';
-import HomePage from './pages/HomePage';
+import LandingCategoryPage from './pages/LandingCategoryPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
     <>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/home' element={<HomePage />} />
+        <Route path='/category' element={<LandingCategoryPage />} />
         <Route path='/*' element={<NotFoundPage />} />
       </Routes>
     </>

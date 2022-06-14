@@ -4,7 +4,7 @@ import { Wrapper, Button } from './LandingButton.styled';
 export default function LandingButton({ text }) {
   return (
     <Wrapper>
-      <Link to='/home'>
+      <Link to='/category'>
         <Button>{text}</Button>
       </Link>
     </Wrapper>
