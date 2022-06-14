@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import NotFoundPage from './pages/NotFoundPage';
-import Index from './pages/Tetris';
+import Index from './pages/CatWord';
 
 export default function App() {
   return (
