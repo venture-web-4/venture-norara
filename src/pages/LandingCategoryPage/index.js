@@ -1,11 +1,13 @@
-import Footer from '../../components/Footer';
+import AnimationFooter from '../../components/AnimationFooter';
 import Gnb from '../../components/Gnb';
+
+import { Wrapper } from '../LandingPage/LandingPage.styled';
 
 export default function LandingCategoryPage() {
   return (
-    <div>
+    <Wrapper paddingTop={0}>
       <Gnb />
-      <Footer />
-    </div>
+      <AnimationFooter />
+    </Wrapper>
   );
 }
