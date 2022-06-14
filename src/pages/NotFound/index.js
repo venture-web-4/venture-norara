@@ -1,15 +1,15 @@
 import AnimationFooter from '../../components/AnimationFooter';
 import LandingButton from '../../components/LandingButton';
 
-import { Wrapper } from '../LandingPage/LandingPage.styled';
+import { Wrapper } from '../Landing/Landing.styled';
 import {
   NotFoundWrapper,
   TitleOuterWrapper,
   TitleWrapper,
   SubTitleWrapper,
-} from './NotFoundPage.styled';
+} from './NotFound.styled';
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
     <Wrapper>
       <NotFoundWrapper>

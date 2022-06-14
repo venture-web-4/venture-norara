@@ -9,9 +9,9 @@ import {
   SunInnerWrapper,
   SunCoreColor,
   OuterWrapper,
-} from './LandingPage.styled';
+} from './Landing.styled';
 
-export default function LandingPage() {
+export default function Landing() {
   return (
     <OuterWrapper>
       <Wrapper paddingTop={70}>

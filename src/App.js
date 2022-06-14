@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 
-import LandingPage from './pages/LandingPage';
-import LandingCategoryPage from './pages/LandingCategoryPage';
-import NotFoundPage from './pages/NotFoundPage';
+import Landing from './pages/Landing';
+import LandingCategory from './pages/LandingCategory';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/category' element={<LandingCategoryPage />} />
-        <Route path='/*' element={<NotFoundPage />} />
+        <Route path='/' element={<Landing />} />
+        <Route path='/category' element={<LandingCategory />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </>
   );
