@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledDisplay = styled.div `
+export const StyledDisplay = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -13,4 +13,4 @@ export const StyledDisplay = styled.div `
   color: ${props => (props.gameOver ? 'red' : '#999')};
   background: #000;
   font-size: 0.8rem;
-`
+`;
