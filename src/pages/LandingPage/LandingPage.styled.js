@@ -4,7 +4,20 @@
 
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const OuterWrapper = styled.div`
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  animation: fadeIn 2s;
+`;
+
+export const Wrapper = styled.div(
+  ({ paddingTop }) => `
   @-webkit-keyframes wave {
     0% {
       background-position: 0% 50%;
@@ -53,7 +66,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
-  padding-top: 70px;
+  padding-top: ${paddingTop || 0}px;
   overflow: hidden;
   background: linear-gradient(137deg, #c6e4e4, #84a6d5, #fc8d9c);
   background-size: 800% 800%;
@@ -63,7 +76,8 @@ export const Wrapper = styled.div`
   -moz-animation: wave 8s ease infinite;
   -o-animation: wave 8s ease infinite;
   animation: wave 8s ease infinite;
-`;
+`
+);
 
 export const UpperClouds = styled.div`
   @keyframes floating {
@@ -133,98 +147,3 @@ export const SunCoreColor = styled.div(
   z-index: ${zIndex};
 `
 );
-
-export const GroundWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-  z-index: 100;
-  width: 100%;
-  height: auto;
-`;
-
-export const ObjOuterWrapper = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-`;
-
-export const ObjLeftWrapper = styled.div`
-  display: flex;
-  margin-left: 30px;
-  align-items: baseline;
-`;
-
-export const ObjRightWrapper = styled.div`
-  display: flex;
-  margin-right: 30px;
-  align-items: baseline;
-`;
-
-export const DrainBlockHigh = styled.div`
-  width: 50px;
-  height: 48px;
-  margin-right: 10px;
-  background-image: url('../../../img/drain.png');
-`;
-
-export const DrainBlockLow = styled.div`
-  width: 50px;
-  height: 40px;
-  margin-right: 10px;
-  background-image: url('../../../img/drain.png');
-`;
-
-export const KupaBlock = styled.div`
-  width: 90px;
-  height: 100px;
-  margin: 0 10px;
-  background-image: url('../../../img/kupa.gif');
-  background-size: 90px 100px;
-`;
-
-export const GreenPlantBlock = styled.div`
-  width: 50px;
-  height: 70px;
-  background-image: url('../../../img/greenplant.gif');
-  background-size: 50px 70px;
-`;
-
-export const MarioBlock = styled.div`
-  @keyframes jump {
-    0% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(0, -15px);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
-  width: 40px;
-  height: 60px;
-  margin: 0 10px;
-  background-image: url('../../../img/mario.gif');
-  background-size: 40px 60px;
-  animation: jump 1s linear infinite alternate;
-`;
-
-export const RedPlantBlock = styled.div`
-  width: 40px;
-  height: 60px;
-  margin-right: 10px;
-  background-image: url('../../../img/redplant.gif');
-  background-size: 40px 60px;
-`;
-
-export const GrassBlock = styled.div`
-  width: 100%;
-  height: 32px;
-  background-image: url('../../../img/grass.png');
-`;
-
-export const GroundBlock = styled.div`
-  width: 100%;
-  height: 32px;
-  background-image: url('../../../img/ground.png');
-`;
