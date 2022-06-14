@@ -1,28 +1,43 @@
 import useInterval from '../hooks/useInterval';
 import { useState } from 'react';
-import { StyledBalloon, StyledGameBoard } from '../styles/StyledCatWordComponents';
+import {
+  StyledBalloon,
+  StyledGameBoard,
+} from '../styles/StyledCatWordComponents';
 
-export function Component1({setWordList}) {
-  const [userInput, setUserInput] = useState('')
-  const [inputValue, setInputValue] = useState('')
+export function Component1({ setWordList }) {
+  const [inputValue, setInputValue] = useState('');
 
-  const onReset = () => {
-    setInputValue('')
-  }
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <>
-      <input onChange={e => setUserInput(e.target.value)} onKeyDown={(e)=>{
-        if (e.keyCode ===13) {
-          setWordList(prev=> prev.concat(userInput))
+      <input
+        value={inputValue}
+        onChange={e => {
+          handleChange(e)
+        }}
+        onKeyDown={e => {
+          if (e.keyCode === 13) {
+            setWordList(prev => prev.concat(inputValue));
+            setInputValue('')
           }
-        }} />
-      <button onClick={()=> {setWordList(prev=> prev.concat(userInput))}}>제출하기</button>
+        }}
+      />
+      <button
+        onClick={() => {
+          setWordList(prev => prev.concat(inputValue));
+        }}
+      >
+        제출하기
+      </button>
     </>
   );
 }
 
-export function Component3({wordList}) {
+export function Component3({ wordList }) {
   // 우선 유저로부터 입력하는 값을 받아오고
 
   // 서버 통신을 통해서 유효한 값인지 받아오고
@@ -32,9 +47,9 @@ export function Component3({wordList}) {
   return (
     <>
       <StyledGameBoard>
-        {wordList.map((word, index)=> 
+        {wordList.map((word, index) => (
           <Component6 key={index} words={word} />
-        )}
+        ))}
         {/* map 함수로 펼칠 예정 */}
       </StyledGameBoard>
     </>

@@ -60,12 +60,12 @@ export const StyledStatusBar = styled.div`
 `;
 
 export const StyledBarWrapper = styled.div`
-  display:flex;
-  flex-direction:row;
-`
+  display: flex;
+  flex-direction: row;
+`;
 
 export const StyledGameBoard = styled.div`
-  background:#ff24f3;
+  background: #ff24f3;
   height: 300px;
   border-radius: 30px;
-`
+`;

@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {
-  Component1,
-  Component3,
-  Component4,
-} from '../../components/Component';
+import axios from 'axios'
+import { wordRelay } from '../../api/wordRelay'
+
+import { Component1, Component3, Component4 } from '../../components/Component';
 import Cat from '../../img/cat.png';
 import {
   StyledCat,
@@ -16,6 +15,12 @@ import {
 
 export default function CatWord() {
   const [wordList, setWordList] = useState(['안녕', '하이', '이거 맞지?']);
+
+
+  useEffect(() => {
+    axios.get(`?key=8E9D659C28621BC5BB6AA77E6009099E&q=안녕`).then(res => console.log(res.data))
+  },[])
+
 
   return (
     <div>
