@@ -1,7 +1,5 @@
-import { } from './Gnb.styled';
+import {} from './Gnb.styled';
 
 export default function Gnb() {
-  return (
-    <div>header</div>
-  );
+  return <div>header</div>;
 }
