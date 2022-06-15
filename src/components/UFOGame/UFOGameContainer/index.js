@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+
 import AlphaButton from '../AlphaButton';
 import BasicButton from '../BasicButton';
 import HowToDescription from '../HowToDescription';
@@ -15,6 +16,7 @@ import {
   Wrapper,
   Title,
   SubTitle,
+  HowToButton,
   ImgButtonWrapper,
   ImgWrapper,
   GameImg,
@@ -31,19 +33,23 @@ import {
 } from './UFOGameContainer.styled';
 
 export default function UFOGameContainer() {
-  const [start, setStart] = useState(false);
+  const [HowTo, setHowTo] = useState(false);
   const [failure, setFailure] = useState(0);
   const [imgNumber, setImgNumber] = useState(0);
   const [life, setLife] = useState(GAMEOVER_NUMBER);
+  const [targetWordsArr] = useState(pickRandom(WORDS));
+  const [clickedAlphaArr, setclickedAlphaArr] = useState([]);
+  const [guessWordsArr, setGuessWordsArr] = useState(setLenArr(targetWordsArr));
   const [isClickedArr, setIsClickedArr] = useState(
     Array(ALPHABET_ARR.length).fill(false)
   );
-  const [clickedAlphaArr, setclickedAlphaArr] = useState([]);
-  const [targetWordsArr, setTargetWordsArr] = useState(pickRandom(WORDS));
-  const [guessWordsArr, setGuessWordsArr] = useState(setLenArr(targetWordsArr));
 
-  const handleClickStart = useCallback(() => {
-    setStart(true);
+  const handleClickHowTo = useCallback(() => {
+    setHowTo(true);
+  });
+
+  const handleClickGoBack = useCallback(() => {
+    setHowTo(false);
   });
 
   const handleFailure = useCallback((life, failure, imgNumber) => {
@@ -111,30 +117,22 @@ export default function UFOGameContainer() {
   }, []);
 
   const handleClickReset = useCallback(() => {
-    const newTargetWordsArr = pickRandom(WORDS);
-    setTargetWordsArr(newTargetWordsArr);
-    setGuessWordsArr(setLenArr(newTargetWordsArr));
-    setFailure(0);
-    setImgNumber(0);
-    setLife(GAMEOVER_NUMBER);
-    setIsClickedArr(() => Array(ALPHABET_ARR.length).fill(false));
-    setclickedAlphaArr([]);
+    // TODO: 리팩토링 -> state 변경
+    window.location.href = '/ufogame';
   }, []);
-
-  useEffect(() => {
-    console.log('타켓', targetWordsArr);
-    console.log('진행', guessWordsArr);
-  }, [targetWordsArr]);
 
   return (
     <OuterWrapper>
       <Wrapper>
         <Title>UFO GAME</Title>
         <SubTitle>단어를 맞혀 우주선으로부터 뚱이를 구해 주세요!</SubTitle>
-        {!start ? (
+        {!HowTo && (
+          <HowToButton onClick={handleClickHowTo}>HOW TO PLAY?</HowToButton>
+        )}
+        {HowTo ? (
           <>
             <HowToDescription />
-            <BasicButton onClick={handleClickStart} text={'시작하기'} />
+            <BasicButton onClick={handleClickGoBack} text={'돌아가기'} />
           </>
         ) : (
           <ImgButtonWrapper>
