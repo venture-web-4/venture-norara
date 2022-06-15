@@ -1,8 +1,11 @@
 import useInterval from '../hooks/useInterval';
 import { useState } from 'react';
 import {
-  StyledBalloon,
+  StyledMeow,
   StyledGameBoard,
+  StyledInputButton,
+  StyledWordInput,
+  StyledGameLine,
 } from '../styles/StyledCatWordComponents';
 
 export function Component1({ checkWord }) {
@@ -14,7 +17,7 @@ export function Component1({ checkWord }) {
 
   return (
     <>
-      <input
+      <StyledWordInput
         value={inputValue}
         onChange={e => {
           handleChange(e);
@@ -26,13 +29,13 @@ export function Component1({ checkWord }) {
           }
         }}
       />
-      <button
+      <StyledInputButton
         onClick={() => {
           checkWord(inputValue);
         }}
       >
-        제출하기
-      </button>
+        제출
+      </StyledInputButton>
     </>
   );
 }
@@ -48,7 +51,7 @@ export function Component3({ wordList }) {
     <>
       <StyledGameBoard>
         {wordList.map((word, index) => (
-          <Component6 key={index} words={word} />
+          <StyledGameLine type={word["type"]} key={index}>{word["text"]}</StyledGameLine>
         ))}
         {/* map 함수로 펼칠 예정 */}
       </StyledGameBoard>
@@ -60,9 +63,9 @@ export function Component4() {
   const [slay, setSlay] = useState(0);
 
   const arr = [
-    '나도 못이긴다냥?!',
+    '나는 끝말잇기를 잘하는 고양이라냥!',
     '어디 한번 덤벼보라냥',
-    '나는 끝말잇기 좀 한다냥',
+    '나는 단 한 번도 진 적이 없다냥',
   ];
 
   useInterval(() => {
@@ -72,16 +75,8 @@ export function Component4() {
   }, 5000);
 
   return (
-    <StyledBalloon>
-      <div>{arr[slay]}</div>
-    </StyledBalloon>
-  );
-}
-
-function Component6({ words }) {
-  return (
-    <div>
-      <div>{words}</div>
-    </div>
+    <StyledMeow>
+      {arr[slay]}
+    </StyledMeow>
   );
 }
