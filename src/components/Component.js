@@ -51,7 +51,9 @@ export function Component3({ wordList }) {
     <>
       <StyledGameBoard>
         {wordList.map((word, index) => (
-          <StyledGameLine type={word["type"]} key={index}>{word["text"]}</StyledGameLine>
+          <StyledGameLine color={word['color']} key={index}>
+            {word['text']}
+          </StyledGameLine>
         ))}
         {/* map 함수로 펼칠 예정 */}
       </StyledGameBoard>
@@ -74,9 +76,5 @@ export function Component4() {
     } else setSlay(prev => prev + 1);
   }, 5000);
 
-  return (
-    <StyledMeow>
-      {arr[slay]}
-    </StyledMeow>
-  );
+  return <StyledMeow>{arr[slay]}</StyledMeow>;
 }

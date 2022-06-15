@@ -3,7 +3,7 @@ import useInterval from '../../hooks/useInterval';
 
 //Components
 import { Component1, Component3, Component4 } from '../../components/Component';
-import { catAnswer } from '../../components/catAnswer'
+import { catAnswer } from '../../components/catAnswer';
 
 //Image Source
 import Cat from '../../img/cat.png';
@@ -15,15 +15,14 @@ import {
   StyledWrapper,
   StyledStatusBar,
   StyledBarWrapper,
-  StyledGameWrapperPart
+  StyledGameWrapperPart,
 } from '../../styles/StyledCatWordComponents';
 
-
-
 export default function CatWord() {
-  const [wordList, setWordList] = useState([{"text":"제시어", "answer":"cat"}]);
-  const [point, setPoint] = useState(1);
+  const [wordList, setWordList] = useState([{ text: '제시어', color: 'red' }]);
+  const [point, setPoint] = useState(0);
   const [time, setTimer] = useState(15);
+  const [timeStatus, setTimeStatus] = useState('black')
 
   const checkWord = word => {
     // api를 이용한 로직도 추가해야 함
@@ -34,32 +33,38 @@ export default function CatWord() {
     //   return;
     // }
 
+    console.log(wordList[wordList.length - 1]['text'].slice(-1))
+
     if (point === 6) {
       alert('인간, 끝말잇기 너무 잘한다냥! 같이 놀기 싫다냥!');
-      setWordList(wordList.concat({"text":'냥냥냥냥', "answer":"cat"}));
+      catAnswer({ word, setWordList, point });
     } else {
       if (
         word.length > 1 &&
-        wordList[wordList.length - 1]["text"].slice(-1) === word[0]
+        wordList[wordList.length - 1]['text'].slice(-1) === word[0]
         //api를 통해 체크하는 조건 추가
       ) {
-        setWordList(wordList.concat({"text":word, "answer":"person"}));
+        setWordList(wordList.concat({ text: word, color: 'green' }));
         setPoint(prev => prev + 1);
-        catAnswer({word, setWordList});
+        catAnswer({ word, setWordList, point });
       } else {
         alert('그건 틀렸다냥!');
       }
     }
   };
 
-  // useInterval(()=> {
-  //   setTimer(prev=>prev-1)
-  // },1000)
+  useInterval(()=> {
+    setTimer(prev=>prev-1)
+  },1000)
 
   useEffect(() => {
     if (time === 0) {
       alert('Game Over');
-      setTimer(15);
+      location.reload();
+    }
+
+    if (time === 10) {
+      setTimeStatus('red')
     }
   }, [time]);
 
@@ -74,7 +79,7 @@ export default function CatWord() {
           <StyledGameWrapperPart>
             <StyledBarWrapper>
               <StyledStatusBar>점수 : {point}</StyledStatusBar>
-              <StyledStatusBar>제한시간 : {time}</StyledStatusBar>
+              <StyledStatusBar color={timeStatus}>제한시간 : {time}</StyledStatusBar>
             </StyledBarWrapper>
             <div>
               <Component3 wordList={wordList} />

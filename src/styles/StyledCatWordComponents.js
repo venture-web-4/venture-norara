@@ -17,9 +17,9 @@ const dancingCat = keyframes`
 export const StyledCat = styled.img`
   width: 300px;
   height: 300px;
-  animation: ${dancingCat} 0.3s 1s infinite linear alternate;
+  animation: ${dancingCat} 0.2s 1s infinite linear alternate;  
   background-color: white;
-  cursor:grab;
+  cursor: grab;
   user-select: none;
 `;
 
@@ -51,7 +51,7 @@ export const StyledWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: rgba(100,190,100);
+  background: rgba(100, 190, 100);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +62,7 @@ export const StyledStatusBar = styled.div`
   width: auto;
   text-align: center;
   border-radius: 10px;
+  color: ${props => props['color']}
 `;
 
 export const StyledBarWrapper = styled.div`
@@ -76,6 +77,10 @@ export const StyledGameBoard = styled.div`
   border-radius: 30px;
   overflow: auto;
   padding: 20px;
+  margin-bottom: 10px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const StyledWordInput = styled.input`
@@ -84,7 +89,7 @@ export const StyledWordInput = styled.input`
   margin-top: 5px;
   padding-left: 10px;
   width: 80%;
-`
+`;
 
 export const StyledInputButton = styled.button`
   margin-left: 5px;
@@ -92,18 +97,19 @@ export const StyledInputButton = styled.button`
   border: 2px solid black;
   border-radius: 10px;
   background-color: green;
-  color:white;
+  color: white;
   width: fit-content;
-`
+`;
 export const StyledGameWrapperPart = styled.div`
   height: auto;
   width: 50%;
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  align-items:center;
-`
+  align-items: center;
+`;
 
 export const StyledGameLine = styled.div`
-  color:${(props)=> props.color || "black"};
-`
+  color: ${props => props.color || 'black'};
+  margin: 10px 0;
+`;
