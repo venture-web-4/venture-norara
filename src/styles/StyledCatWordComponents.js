@@ -20,9 +20,8 @@ export const StyledCat = styled.img`
 `;
 
 export const StyledBalloon = styled.div`
-  width: 300px;
-  height: auto;
-  background-color: #fff222;
+  width: auto;
+  border: 2px solid black;
   color: black;
   border-radius: 300px;
   display: flex;
@@ -34,11 +33,12 @@ export const StyledGameWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 700px;
-  height: 400px;
+  width: 50%;
+  height: 70%;
   background-color: white;
   padding: 30px;
   border-radius: 30px;
+  justify-content : space-around;
 `;
 
 export const StyledWrapper = styled.div`
@@ -68,4 +68,6 @@ export const StyledGameBoard = styled.div`
   background: #ff24f3;
   height: 300px;
   border-radius: 30px;
+  overflow:auto;
+  padding:20px;
 `;

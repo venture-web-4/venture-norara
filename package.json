@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
+    "http-proxy-middleware": "^2.0.6",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -54,5 +55,5 @@
     "husky": "^8.0.1",
     "prettier": "^2.6.2"
   },
-  "proxy":"https://opendict.korean.go.kr/api/search"
+  "proxy": "https://opendict.korean.go.kr/api/search"
 }

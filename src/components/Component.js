@@ -5,10 +5,10 @@ import {
   StyledGameBoard,
 } from '../styles/StyledCatWordComponents';
 
-export function Component1({ setWordList }) {
+export function Component1({ checkWord }) {
   const [inputValue, setInputValue] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setInputValue(e.target.value);
   };
 
@@ -17,18 +17,18 @@ export function Component1({ setWordList }) {
       <input
         value={inputValue}
         onChange={e => {
-          handleChange(e)
+          handleChange(e);
         }}
         onKeyDown={e => {
           if (e.keyCode === 13) {
-            setWordList(prev => prev.concat(inputValue));
-            setInputValue('')
+            checkWord(inputValue);
+            setInputValue('');
           }
         }}
       />
       <button
         onClick={() => {
-          setWordList(prev => prev.concat(inputValue));
+          checkWord(inputValue);
         }}
       >
         제출하기
