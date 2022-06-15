@@ -18,7 +18,7 @@ export default function LandingHeader() {
       </TitleOuterWrapper>
 
       <AnnuonceWrapper>
-        <Announce>{'🕹 다양한 게임에 참여해 랭커가 되어보세요.💎'}</Announce>
+        <Announce>{'🕹 시간 순삭되는 다양한 게임에 참여해보세요.💎'}</Announce>
       </AnnuonceWrapper>
 
       <ButtonWrapper>

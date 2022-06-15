@@ -66,7 +66,7 @@ export const Announce = styled.div`
   justify-content: center;
   margin-top: 10px;
   height: 40px;
-  width: 450px;
+  width: 460px;
   background-clip: content-box;
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
