@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     }
   }
   width: 430px;
-  height: 280px;
+  height: 500px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,22 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   animation: popUp 0.2s ease;
-  padding: 30px;
+  padding: 22px 30px 30px 30px;
+`;
+
+export const ModalImageLose = styled.div`
+  width: 320px;
+  height: 230px;
+  background-image: url('../../../img/ufo7.png');
+  background-size: 320px 230px;
+`;
+
+export const ModalImageWin = styled.div`
+  width: 230px;
+  height: 230px;
+  background-image: url('../../../img/win.png');
+  background-size: 230px 230px;
+  border-radius: 50%;
 `;
 
 export const ModalTitleWrapper = styled.div`

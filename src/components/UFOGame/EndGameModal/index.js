@@ -7,6 +7,8 @@ import {
   ModalAnswer,
   ModalTitleWrapper,
   ButtonWrapper,
+  ModalImageLose,
+  ModalImageWin,
 } from './EndGameModal.styled';
 
 export default function EndGameModal({ isWin, answer }) {
@@ -22,11 +24,13 @@ export default function EndGameModal({ isWin, answer }) {
     <Wrapper>
       {isWin ? (
         <ModalTitleWrapper>
+          <ModalImageWin />
           <ModalAnnounce>와! 뚱이를 구출했습니다!🎉</ModalAnnounce>
           <ModalAnswer>정답 : {answer}</ModalAnswer>
         </ModalTitleWrapper>
       ) : (
         <ModalTitleWrapper>
+          <ModalImageLose />
           <ModalAnnounce>뚱이는..떠나갔습니다...😥</ModalAnnounce>
           <ModalAnswer>정답 : {answer}</ModalAnswer>
         </ModalTitleWrapper>
