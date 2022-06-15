@@ -16,7 +16,7 @@ export const ImgWrapper = styled.div`
   height: 300px;
   background-image: url('../../../img/ufo6.png');
   background-size: 400px 300px;
-`
+`;
 
 export const RuleWrapper = styled.div`
   width: calc(100% - 400px);
