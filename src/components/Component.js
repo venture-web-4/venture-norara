@@ -8,7 +8,7 @@ import {
   StyledGameLine,
 } from '../styles/StyledCatWordComponents';
 
-export function Component1({ checkWord }) {
+export function Component1({ checkWord}) {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = e => {
