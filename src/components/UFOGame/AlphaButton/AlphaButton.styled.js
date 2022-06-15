@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 import '../../../styles/font.scss';
 
-export const Button = styled.button`
+export const Button = styled.button(
+  ({ clicked }) => `
   font-family: 'DungGeunMo';
   display: flex;
   align-items: center;
@@ -10,7 +11,7 @@ export const Button = styled.button`
   width: 45px;
   height: 38px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${clicked ? 'gray' : '#fff'};
   padding-bottom: 5px;
   color: #000;
   font-weight: 500;
@@ -18,17 +19,7 @@ export const Button = styled.button`
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    @keyframes keydown {
-      0% {
-        transform: translate(0, 0);
-      }
-      50% {
-        transform: translate(0, -10px);
-      }
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-    animation: keydown 1s linear infinite;
+    transform: ${clicked ? 'translateY(0px)' : 'translateY(5px)'};
   }
-`;
+`
+);

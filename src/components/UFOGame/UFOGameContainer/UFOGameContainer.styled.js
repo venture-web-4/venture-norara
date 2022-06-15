@@ -80,10 +80,10 @@ export const WordCountWrapper = styled.div`
   height: 140px;
   border-radius: 30px;
   box-shadow: 0px 3px 30px 7px rgba(0, 0, 0, 0.08);
-  padding: 15px;
+  padding: 15px 15px 20px 15px;
 `;
 
-export const WordWrapper = styled.div`
+export const WordsWrapper = styled.div`
   width: 100%;
   height: 50%;
   display: flex;
@@ -92,12 +92,28 @@ export const WordWrapper = styled.div`
   font-size: 40px;
 `;
 
+export const WordWrapper = styled.div`
+  width: auto;
+  height: auto;
+  margin-right: 20px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+`;
+
+export const TextWrapper = styled.div`
+  font-size: 38px;
+  margin: 0 7px;
+  color: ${props => props.color || '#000'};
+`;
+
 export const CountWrapper = styled.div`
   width: 100%;
   height: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   font-size: 23px;
 `;
 
@@ -128,24 +144,4 @@ export const KeyboardWrapper = styled.div`
   place-items: center;
   justify-content: center;
   padding: 8px 30px 10px 30px;
-`;
-
-export const ResetButton = styled.button`
-  background-image: url('../../../img/ground.png');
-  width: 138px;
-  height: 44px;
-  box-shadow: 0px 3px 10px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 600;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-
-  &:hover {
-    transform: translateY(3px);
-    box-shadow: 5px 15px 10px rgba(0, 0, 0, 0.15);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url('../../../img/grass.png');
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-  }
 `;
