@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import '../../../styles/font.scss';
 
 export const Wrapper = styled.div`
-  padding: 20px 50px 15px;
+  padding: 20px 20px 15px;
   width: 100%;
   height: calc(100% - 150px);
   display: flex;
@@ -29,6 +29,6 @@ export const RuleWrapper = styled.div`
 
 export const Rule = styled.div`
   font-size: 20px;
-  margin: 15px 0;
+  margin: 10px 0;
   font-weight: 600;
 `;

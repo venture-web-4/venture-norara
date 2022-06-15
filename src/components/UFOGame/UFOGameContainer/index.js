@@ -1,7 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
+import Dim from '../Dim';
+import ToastModal from '../ToastModal';
 import AlphaButton from '../AlphaButton';
 import BasicButton from '../BasicButton';
+import EndGameModal from '../EndGameModal';
 import HowToDescription from '../HowToDescription';
 
 import { pickRandom, setLenArr, allIndexOf } from '../../../utils/UFOGame';
@@ -34,11 +37,15 @@ import {
 
 export default function UFOGameContainer() {
   const [HowTo, setHowTo] = useState(false);
+  const [isWin, setIsWin] = useState(false);
   const [failure, setFailure] = useState(0);
   const [imgNumber, setImgNumber] = useState(0);
   const [life, setLife] = useState(GAMEOVER_NUMBER);
+  const [showModal, setShowModal] = useState(false);
   const [targetWordsArr] = useState(pickRandom(WORDS));
   const [clickedAlphaArr, setclickedAlphaArr] = useState([]);
+  const [isCorrectAlpha, setIsCorrectAlpha] = useState(false);
+  const [showEndGameModal, setShowEndGameModal] = useState(false);
   const [guessWordsArr, setGuessWordsArr] = useState(setLenArr(targetWordsArr));
   const [isClickedArr, setIsClickedArr] = useState(
     Array(ALPHABET_ARR.length).fill(false)
@@ -53,16 +60,24 @@ export default function UFOGameContainer() {
   });
 
   const handleFailure = useCallback((life, failure, imgNumber) => {
-    // 그냥 set 하는 것과의 차이..무엇인가..
     setLife(life - 1);
     setFailure(failure + 1);
     setImgNumber(imgNumber + 1);
-    // 틀렸습니다ㅠ 정도의 toast 띄워주기
+    setIsCorrectAlpha(false);
+    setShowModal(true);
+    setTimeout(() => {
+      setShowModal(false);
+    }, 1000);
+
     return [life - 1];
   }, []);
 
   const handleSuccess = useCallback(() => {
-    // 맞았습니다! 정도의 toast 띄워주기
+    setIsCorrectAlpha(true);
+    setShowModal(true);
+    setTimeout(() => {
+      setShowModal(false);
+    }, 1000);
   }, []);
 
   const handleCheckClickedAlpha = useCallback(alpha => {
@@ -107,25 +122,30 @@ export default function UFOGameContainer() {
   );
 
   const handleLoseGame = useCallback(() => {
-    console.log('game lose ㅠㅠ');
-    console.log('답:', targetWordsArr.join(''));
+    setIsWin(false);
+    setShowEndGameModal(true);
   }, []);
 
   const handleWinGame = useCallback(() => {
-    console.log('game win!!!');
-    console.log('답:', targetWordsArr.join(''));
+    setIsWin(true);
+    setShowEndGameModal(true);
   }, []);
 
   const handleClickReset = useCallback(() => {
-    // TODO: 리팩토링 -> state 변경
     window.location.href = '/ufogame';
   }, []);
 
   return (
     <OuterWrapper>
+      {showEndGameModal && <Dim />}
+      {showModal && <Dim />}
       <Wrapper>
         <Title>UFO GAME</Title>
         <SubTitle>단어를 맞혀 우주선으로부터 뚱이를 구해 주세요!</SubTitle>
+        {showModal && <ToastModal isCorrectAlpha={isCorrectAlpha} />}
+        {showEndGameModal && (
+          <EndGameModal isWin={isWin} answer={targetWordsArr.join('')} />
+        )}
         {!HowTo && (
           <HowToButton onClick={handleClickHowTo}>HOW TO PLAY?</HowToButton>
         )}
