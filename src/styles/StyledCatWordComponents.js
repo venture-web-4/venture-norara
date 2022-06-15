@@ -17,7 +17,7 @@ const dancingCat = keyframes`
 export const StyledCat = styled.img`
   width: 300px;
   height: 300px;
-  animation: ${dancingCat} 0.2s 1s infinite linear alternate;  
+  animation: ${dancingCat} 0.2s 1s infinite linear alternate;
   background-color: white;
   cursor: grab;
   user-select: none;
@@ -62,7 +62,7 @@ export const StyledStatusBar = styled.div`
   width: auto;
   text-align: center;
   border-radius: 10px;
-  color: ${props => props['color']}
+  color: ${props => props['color']};
 `;
 
 export const StyledBarWrapper = styled.div`

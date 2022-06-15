@@ -21,8 +21,7 @@ import {
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '제시어', color: 'red' }]);
   const [point, setPoint] = useState(0);
-  const [time, setTimer] = useState(15);
-  const [timeStatus, setTimeStatus] = useState('black')
+  const [status, setStatus] = useState({time:15, color:'black'});
 
   const checkWord = word => {
     // api를 이용한 로직도 추가해야 함
@@ -33,9 +32,9 @@ export default function CatWord() {
     //   return;
     // }
 
-    console.log(wordList[wordList.length - 1]['text'].slice(-1))
+    console.log(wordList[wordList.length - 1]['text'].slice(-1));
 
-    if (point === 6) {
+    if (point === 20) {
       alert('인간, 끝말잇기 너무 잘한다냥! 같이 놀기 싫다냥!');
       catAnswer({ word, setWordList, point });
     } else {
@@ -47,26 +46,31 @@ export default function CatWord() {
         setWordList(wordList.concat({ text: word, color: 'green' }));
         setPoint(prev => prev + 1);
         catAnswer({ word, setWordList, point });
+        setStatus({time:15, color:'black'})
       } else {
         alert('그건 틀렸다냥!');
       }
     }
   };
 
-  useInterval(()=> {
-    setTimer(prev=>prev-1)
-  },1000)
+  useInterval(() => {
+    const value=status['time']
+    setStatus({...status, time:value-1});
+  }, 1000);
 
   useEffect(() => {
-    if (time === 0) {
-      alert('Game Over');
+    if (status['time'] === 0) {
+      alert(`Game Over
+      고양이의 승리다냥!
+      `);
       location.reload();
     }
 
-    if (time === 10) {
-      setTimeStatus('red')
+    if (status['time'] === 10) {
+      const value=status['time']
+      setStatus({...status, color:'red'});
     }
-  }, [time]);
+  }, [status['time']]);
 
   return (
     <div>
@@ -79,7 +83,9 @@ export default function CatWord() {
           <StyledGameWrapperPart>
             <StyledBarWrapper>
               <StyledStatusBar>점수 : {point}</StyledStatusBar>
-              <StyledStatusBar color={timeStatus}>제한시간 : {time}</StyledStatusBar>
+              <StyledStatusBar color={status['color']}>
+                제한시간 : {status['time']}
+              </StyledStatusBar>
             </StyledBarWrapper>
             <div>
               <Component3 wordList={wordList} />
