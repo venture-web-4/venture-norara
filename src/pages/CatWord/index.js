@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useInterval from '../../hooks/useInterval';
 import ReactHowler from 'react-howler';
+import axios from 'axios';
 
 //Components
 import { Component1, Component3, Component4 } from '../../components/Component';
@@ -56,22 +57,29 @@ export default function CatWord() {
     }
   };
 
-  useInterval(() => {
-    const value = status['time'];
-    setStatus({ ...status, time: value - 1 });
-    setSound(false);
-  }, 1200);
+  // useInterval(() => {
+  //   const value = status['time'];
+  //   setStatus({ ...status, time: value - 1 });
+  //   setSound(false);
+  // }, 1200);
 
   useEffect(() => {
-    fetch(`/api/search?key=8E9D659C28621BC5BB6AA77E6009099E&q=안녕`).then(
-    res => console.log(res)
-  );
+    (async () => {
+      const response = await axios.get('/v1/search/encyc.json?query=공부', { 
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Naver-Client-Id': '7kxjOrxWw_28OOiCuUI5', 
+          'X-Naver-Client-Secret': 'UMCZI99Cj3'
+        },
+      });
+      console.log(response.data);
+    })()    
 
     if (status['time'] === 0) {
       alert(`Game Over 고양이의 승리다냥!
       `);
       location.reload();
-    }
+    } 
 
     if (status['time'] === 5) {
       const value = status['time'];

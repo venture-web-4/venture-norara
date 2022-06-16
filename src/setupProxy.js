@@ -1,10 +1,12 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
+// const { createProxyMiddleware } = require('http-proxy-middleware');
 
-module.exports = function (app) {
-  app.use(
-    createProxyMiddleware('/api', {
-      target: 'https://opendict.korean.go.kr',
-      changeOrigin: true,
-    })
-  );
-};
+// module.exports = function (app) {
+//   app.use(
+//     createProxyMiddleware('/v1', {
+//       target: 'https://openapi.naver.com',
+//       changeOrigin: true,
+//     })
+//   );
+// };
+
+// app.use(cors(corsOptions))
