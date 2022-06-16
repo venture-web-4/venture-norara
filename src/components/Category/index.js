@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CategoryItem from '../CategoryItem';
 
-import { Title, Wrapper, ContentWrapper } from './Category.styled';
+import { Title, Wrapper, ContentWrapper, SubTitle } from './Category.styled';
 
 const StyledLink = styled(Link)`
   margin-right: 20px;
@@ -14,14 +14,15 @@ const StyledLink = styled(Link)`
 export default function Category() {
   return (
     <Wrapper>
-      <Title>게임 선택하기</Title>
+      <Title>🕹 게임선택하기 🕹</Title>
+      <SubTitle>마우스를 올려 게임 이미지를 확인해보세요!</SubTitle>
       <ContentWrapper>
         <StyledLink to='/ufogame'>
           <CategoryItem
             title={'UFO 게임'}
             desc={'UFO로부터 뚱이를ㅤ구출해보세요!'}
-            bgImg={''}
-            bgSize={'35px 35px'}
+            bgImg={'../../../img/ddoong.png'}
+            bgSize={'100% 100%'}
           />
         </StyledLink>
       </ContentWrapper>

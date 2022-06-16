@@ -18,7 +18,7 @@ export const Wrapper = styled.div(
   padding: 20px;
   box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.15);
   background-image: url('../../../img/ground.png');
-  background-size: ${bgSize ?? '35px 35px'};
+  background-size: 35px 35px;
   border:8px solid #fff;
 
   &:last-child {
@@ -42,6 +42,7 @@ export const Wrapper = styled.div(
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), ${
       bgImg ? `url(${bgImg})` : `url('../../../img/ground.png')`
     };
+    background-size: ${bgSize ?? '35px 35px'};
     animation: upDown 1s linear infinite;
   }
 `

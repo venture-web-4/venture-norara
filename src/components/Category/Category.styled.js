@@ -15,13 +15,27 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   text-align: center;
-  width: 220px;
+  width: 300px;
   height: auto;
   padding: 0 10px;
-  margin-bottom: 70px;
+  margin-bottom: 20px;
   font-size: 30px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
+`;
+
+export const SubTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 340px;
+  height: 30px;
+  padding: 0 10px;
+  margin-bottom: 70px;
+  font-size: 15px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
 `;
 
 export const ContentWrapper = styled.div`
