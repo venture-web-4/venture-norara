@@ -85,7 +85,6 @@ export default function CatWord() {
       const value = status['time'];
       setStatus({ ...status, color: 'red' });
     }
-
   }, [status['time']]);
 
   return (
