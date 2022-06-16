@@ -5,7 +5,7 @@ import '../../styles/font.scss';
 export const Wrapper = styled.div`
   font-family: 'DungGeunMo';
   position: absolute;
-  top: 45%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -32,7 +32,7 @@ export const SubTitle = styled.div`
   width: 340px;
   height: 30px;
   padding: 0 10px;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
   font-size: 15px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.3);

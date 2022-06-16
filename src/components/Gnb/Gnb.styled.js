@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import '../../styles/font.scss';
 
 export const Wrapper = styled.div`
+  z-index: 999999999;
   top: 0;
   color: #000;
   min-width: 500px;
