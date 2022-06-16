@@ -19,6 +19,7 @@ import {
   StyledBarWrapper,
   StyledGameWrapperPart,
 } from '../../styles/StyledCatWordComponents';
+import axios from 'axios';
 
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '제시어', color: 'red' }]);
@@ -56,16 +57,23 @@ export default function CatWord() {
     }
   };
 
-  useInterval(() => {
-    const value = status['time'];
-    setStatus({ ...status, time: value - 1 });
-    setSound(false);
-  }, 1200);
+  // useInterval(() => {
+  //   const value = status['time'];
+  //   setStatus({ ...status, time: value - 1 });
+  //   setSound(false);
+  // }, 1200);
 
   useEffect(() => {
-    fetch(`/api/search?key=8E9D659C28621BC5BB6AA77E6009099E&q=안녕`).then(
-    res => console.log(res)
-  );
+    (async () => {
+      const response = await axios.get(`/v1/search/encyc.json?query=안녕`, {
+        headers: {
+          'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT,
+          'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('네이버 응답', response.data.items);
+    })();
 
     if (status['time'] === 0) {
       alert(`Game Over 고양이의 승리다냥!
@@ -77,6 +85,7 @@ export default function CatWord() {
       const value = status['time'];
       setStatus({ ...status, color: 'red' });
     }
+
   }, [status['time']]);
 
   return (
