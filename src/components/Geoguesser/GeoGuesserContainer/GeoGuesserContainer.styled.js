@@ -8,20 +8,46 @@ export const OuterWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: auto;
 `;
 
-export const Wrapper = styled.div`
-  width: 1000px;
-  min-width: 1000px;
-  height: 650px;
+export const FlexBoxWrapper = styled.div`
+  width: auto;
+  min-height: 600px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1em;
   align-items: center;
   background-color: #fff;
   box-shadow: 0px 3px 30px 7px rgba(0, 0, 0, 0.08);
   border-radius: 30px;
   padding: 30px;
+`;
+
+export const FlexItemWrapper = styled.div`
+  height: auto;
+  flex-shrink: 1;
+  flex-grow: 1;
+  align-items: center;
+`;
+
+export const ColContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ImgWrapper = styled.div`
+  width: 400px;
+  height: 300px;
+  background-image: url('../../../img/ufo6.png');
+  background-size: 400px 300px;
 `;
 
 export const HowToButton = styled.button`

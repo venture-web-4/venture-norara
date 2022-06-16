@@ -7,19 +7,24 @@ import BasicButton from '../../UFOGame/BasicButton';
 import EndGameModal from '../../UFOGame/EndGameModal';
 import HowToDescription from '../../UFOGame/HowToDescription';
 
+import KakaoMap from '../KakaoMap';
+
 import {
   OuterWrapper,
-  Wrapper,
+  FlexBoxWrapper,
+  FlexItemWrapper,
+  ColContainer,
+  RowContainer,
   Title,
   SubTitle,
   HowToButton,
+  ImgWrapper,
 } from './GeoGuesserContainer.styled';
 
 export default function GeoGuesserContainer() {
   const [HowTo, setHowTo] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showEndGameModal, setShowEndGameModal] = useState(false);
-
 
   const handleClickHowTo = useCallback(() => {
     setHowTo(true);
@@ -33,21 +38,30 @@ export default function GeoGuesserContainer() {
     <OuterWrapper>
       {showEndGameModal && <Dim />}
       {showModal && <Dim />}
-      <Wrapper>
-        <Title>위치 맞추기</Title>
-        <SubTitle>사진을 보고 위치를 맞혀보세요</SubTitle>
-        {!HowTo && (
-          <HowToButton onClick={handleClickHowTo}>HOW TO PLAY?</HowToButton>
-        )}
+      <FlexBoxWrapper>
+        <FlexItemWrapper>
+          <ColContainer>
+            <Title>위치 맞추기</Title>
+            <SubTitle>사진을 보고 위치를 맞혀보세요</SubTitle>
+            {!HowTo && (
+              <HowToButton onClick={handleClickHowTo}>HOW TO PLAY?</HowToButton>
+            )}
+            <ImgWrapper />
+          </ColContainer>
+        </FlexItemWrapper>
         {HowTo ? (
-          <>
-            <HowToDescription />
-            <BasicButton onClick={handleClickGoBack} text={'돌아가기'} />
-          </>
+          <FlexItemWrapper>
+            <ColContainer>
+              <HowToDescription />
+              <BasicButton onClick={handleClickGoBack} text={'돌아가기'} />
+            </ColContainer>
+          </FlexItemWrapper>
         ) : (
-          <p>its geoguesser</p>
+          <FlexItemWrapper>
+            <KakaoMap />
+          </FlexItemWrapper>
         )}
-      </Wrapper>
+      </FlexBoxWrapper>
     </OuterWrapper>
   );
 }
