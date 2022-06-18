@@ -1,7 +1,6 @@
-import * as firebase from 'firebase/app';
-
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 // https://breathtaking-life.tistory.com/126
 
@@ -18,4 +17,9 @@ const initializeFirebase = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
-export default initializeFirebase;
+const loadDb = () => {
+  firebase.initializeApp(firebaseConfig);
+  return firebase.firestore();
+};
+
+export { initializeFirebase, loadDb };
