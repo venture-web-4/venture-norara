@@ -73,10 +73,13 @@ export default function Gnb() {
     function randomNum(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     }
-    let gametype = randomNum(0, 3);
-    let score = randomNum(0, 200);
-    let username = 'user' + randomNum(0, 100);
-    await postScore(gametype, username, score);
+    if (auth.currentUser) {
+      let gametype = randomNum(0, 3);
+      let score = randomNum(0, 200);
+      let username = auth.currentUser.displayName;
+      let email = auth.currentUser.email;
+      await postScore(gametype, score, username, email);
+    }
   }
 
   useEffect(() => {

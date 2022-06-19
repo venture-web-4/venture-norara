@@ -25,7 +25,7 @@ async function getScores(gametype = null) {
   return scores;
 }
 
-async function postScore(gametype, username, score) {
+async function postScore(gametype, score, username, email) {
   let db = loadDb();
   if (
     typeof gametype != 'number' &&
@@ -40,8 +40,9 @@ async function postScore(gametype, username, score) {
   let docRef = db.collection('scores').doc();
   let doc = {
     gametype: gametype,
-    username: username,
     score: score,
+    username: username,
+    email: email,
   };
   await docRef.set(doc);
   return true;
