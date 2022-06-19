@@ -1,4 +1,5 @@
 import LandingButton from '../LandingButton';
+import Ranking from '../Ranking';
 import {
   Announce,
   AnnuonceWrapper,
@@ -12,18 +13,12 @@ import {
   RankingTitleWrapper,
   RankingTitle,
   RankingEachGameWrapper,
-  RankingEachGame,
   RankingImg,
-  Rankers,
-  GameTitleRankersWrapper,
-  GameTitle,
-  Score,
-  Loading,
-  LoadingImg,
 } from './LandingHeader.styled';
 
 export default function LandingHeader() {
   // MOCK DATA: 게임별 score 필터링해서 랭크 보여주기
+  // nestedArray = [[username1, score1], [username2, score2],  ... ];
   const rankersOnUFOGame = [
     ['4조', 600],
     ['페이커', 500],
@@ -103,92 +98,11 @@ export default function LandingHeader() {
         </RankingTitleWrapper>
 
         <RankingEachGameWrapper>
-          {/* GameTitleRankersWrapper 하나씩 추가하면 column 하나 생김 */}
-          <GameTitleRankersWrapper>
-            <GameTitle>UFO GAME</GameTitle>
-            <RankingEachGame>
-              {/* index를 key로 사용하면 비효율적, 일단 플래그가 없어서 써둠 */}
-              {!rankersOnUFOGame ? (
-                <Loading>
-                  Loading ...
-                  <LoadingImg />
-                </Loading>
-              ) : (
-                rankersOnUFOGame?.map((elem, index) => {
-                  return (
-                    <Rankers key={index}>
-                      {`${index + 1}등 ${elem[0]}`}
-                      <Score>{`- ${elem[1]}점 `}</Score>
-                    </Rankers>
-                  );
-                })
-              )}
-            </RankingEachGame>
-          </GameTitleRankersWrapper>
-
-          {/* GameTitleRankersWrapper 하나씩 추가하면 column 하나 생김 */}
-          <GameTitleRankersWrapper>
-            <GameTitle>위치를 찾아라!</GameTitle>
-            <RankingEachGame>
-              {!rankersOnGeoguesser ? (
-                <Loading>
-                  Loading ...
-                  <LoadingImg />
-                </Loading>
-              ) : (
-                rankersOnGeoguesser?.map((elem, index) => {
-                  return (
-                    <Rankers key={index}>
-                      {`${index + 1}등 ${elem[0]}`}
-                      <Score>{`- ${elem[1]}점 `}</Score>
-                    </Rankers>
-                  );
-                })
-              )}
-            </RankingEachGame>
-          </GameTitleRankersWrapper>
-
-          <GameTitleRankersWrapper>
-            <GameTitle>냥이와 끝말잇기</GameTitle>
-            <RankingEachGame>
-              {!rankersOnCatGame ? (
-                <Loading>
-                  Loading ...
-                  <LoadingImg />
-                </Loading>
-              ) : (
-                rankersOnCatGame?.map((elem, index) => {
-                  return (
-                    <Rankers key={index}>
-                      {`${index + 1}등 ${elem[0]}`}
-                      <Score>{`- ${elem[1]}점 `}</Score>
-                    </Rankers>
-                  );
-                })
-              )}
-            </RankingEachGame>
-          </GameTitleRankersWrapper>
-
-          <GameTitleRankersWrapper>
-            <GameTitle>소행성을 부숴라!</GameTitle>
-            <RankingEachGame>
-              {!rankersOnAsteroids ? (
-                <Loading>
-                  Loading ...
-                  <LoadingImg />
-                </Loading>
-              ) : (
-                rankersOnAsteroids?.map((elem, index) => {
-                  return (
-                    <Rankers key={index}>
-                      {`${index + 1}등 ${elem[0]}`}
-                      <Score>{`- ${elem[1]}점 `}</Score>
-                    </Rankers>
-                  );
-                })
-              )}
-            </RankingEachGame>
-          </GameTitleRankersWrapper>
+          {/* Ranking 하나씩 추가하면 column 하나 생김 */}
+          <Ranking title={'UFO GAME'} data={rankersOnUFOGame} />
+          <Ranking title={'위치를 찾아라!'} data={rankersOnGeoguesser} />
+          <Ranking title={'냥이와 끝말잇기'} data={rankersOnCatGame} />
+          <Ranking title={'소행성을 부숴라!'} data={rankersOnAsteroids} />
         </RankingEachGameWrapper>
       </RankingWrapper>
     </Wrapper>
