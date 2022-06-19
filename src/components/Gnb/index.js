@@ -23,6 +23,7 @@ import {
 import { executeLogin, executeLogout, changeDisplayName } from '../../api/auth';
 // @debug
 import { getScores, postScore } from '../../api/score';
+import { clearItem, saveItem } from '../../utils/storage';
 
 export default function Gnb() {
   const auth = getAuth();
@@ -50,6 +51,8 @@ export default function Gnb() {
         console.log('login success');
         setIsLoggedIn(true);
         setUserName(res);
+        saveItem('userName', auth.currentUser.displayName);
+        saveItem('userEmail', auth.currentUser.email);
       } else {
         console.log('login failed');
         setIsLoggedIn(false);
@@ -63,6 +66,8 @@ export default function Gnb() {
     setIsLoggedIn(false);
     setUserName('');
     window.location.href = '/';
+    clearItem('userName');
+    clearItem('userEmail');
   };
 
   // @debug
@@ -74,10 +79,13 @@ export default function Gnb() {
     function randomNum(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     }
-    let gametype = randomNum(0, 3);
-    let score = randomNum(0, 200);
-    let username = 'user' + randomNum(0, 100);
-    await postScore(gametype, username, score);
+    if (auth.currentUser) {
+      let gametype = randomNum(0, 3);
+      let score = randomNum(0, 200);
+      let username = auth.currentUser.displayName;
+      let email = auth.currentUser.email;
+      await postScore(gametype, score, username, email);
+    }
   }
 
   useEffect(() => {

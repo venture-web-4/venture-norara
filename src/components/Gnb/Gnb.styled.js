@@ -62,6 +62,7 @@ export const SigninWrapper = styled.div`
 `;
 
 export const SignupWrapper = styled.div`
+  margin-left: 30px;
   font-family: 'Y_Spotlight';
   color: #e5e5e5;
   &:hover {

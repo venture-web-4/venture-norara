@@ -4,7 +4,7 @@ import '../../../styles/font.scss';
 
 export const Button = styled.button`
   background-image: url('../../../img/ground.png');
-  width: 138px;
+  width: auto;
   height: 44px;
   box-shadow: 0px 3px 10px 5px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
@@ -12,6 +12,7 @@ export const Button = styled.button`
   font-size: 20px;
   font-weight: 600;
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  padding: 0 30px;
 
   &:hover {
     transform: translateY(3px);
