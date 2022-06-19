@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 
 import {
@@ -62,6 +62,7 @@ export default function Gnb() {
     executeLogout();
     setIsLoggedIn(false);
     setUserName('');
+    window.location.href = '/';
   };
 
   // @debug
@@ -92,12 +93,12 @@ export default function Gnb() {
   return (
     <Wrapper>
       <NavigatorWrapper>
-        <Link to='/'>
-          <LandingWrapper>NORARA</LandingWrapper>
-        </Link>
-        <Link to='/category'>
-          <CategoryWrapper>게임 선택하기</CategoryWrapper>
-        </Link>
+        <LandingWrapper onClick={() => (window.location.href = '/')}>
+          NORARA
+        </LandingWrapper>
+        <CategoryWrapper onClick={() => (window.location.href = '/category')}>
+          게임 선택하기
+        </CategoryWrapper>
       </NavigatorWrapper>
 
       <AuthWrapper>

@@ -33,14 +33,14 @@ export default function Category() {
             bgSize={'100% 100%'}
           />
         </StyledLink>
-          <StyledLink to='/asteroids'>
-              <CategoryItem
-                  title={'소행성을 부숴라!'}
-                  desc={'쾌적한 우주 여행을 위해 소행성을 제거해주세요!'}
-                  bgImg={'../../../img/asteroid.png'}
-                  bgSize={'100% 100%'}
-              />
-          </StyledLink>
+        <StyledLink to='/asteroids'>
+          <CategoryItem
+            title={'소행성을 부숴라!'}
+            desc={'쾌적한 우주 여행을 위해 소행성을 제거해주세요!'}
+            bgImg={'../../../img/asteroid.png'}
+            bgSize={'100% 100%'}
+          />
+        </StyledLink>
       </ContentWrapper>
     </Wrapper>
   );

@@ -8,8 +8,8 @@ import { initializeFirebase } from './api/firebase';
 
 initializeFirebase();
 ReactDOM.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root')
 );

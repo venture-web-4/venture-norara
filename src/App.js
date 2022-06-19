@@ -5,7 +5,7 @@ import LandingCategory from './pages/LandingCategory';
 import NotFound from './pages/NotFound';
 import UFOGame from './pages/UFOGame';
 import GeoGuesser from './pages/GeoGuesser';
-import Asteroids from "./pages/Asteroids";
+import Asteroids from './pages/Asteroids';
 
 export default function App() {
   return (

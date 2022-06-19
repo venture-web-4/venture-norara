@@ -33,6 +33,7 @@ export const LandingWrapper = styled.div`
   margin-right: 30px;
   &:hover {
     transform: translateY(-3px);
+    cursor: pointer;
   }
 `;
 
@@ -41,6 +42,7 @@ export const CategoryWrapper = styled.div`
   color: #e5e5e5;
   &:hover {
     transform: translateY(-3px);
+    cursor: pointer;
   }
 `;
 
