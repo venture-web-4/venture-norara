@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import '../../../styles/font.scss';
+
 export const ToastWrapper = styled.div`
   @keyframes popUp {
     0% {
@@ -20,13 +22,14 @@ export const ToastWrapper = styled.div`
   align-items: center;
   background-color: #fff;
   position: absolute;
-  top: 20vh;
+  top: 15vh;
   left: 80vw;
   padding: 10px;
   z-index: 101;
   transform: translate(-50%, -50%);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   animation: popUp 0.2s ease;
+  font-family: 'Y_Spotlight';
 `;
 
 export const ModalText = styled.div`
@@ -36,12 +39,28 @@ export const ModalText = styled.div`
 export const InputText = styled.input`
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 15px;
+  width: 60%;
+  border: none;
+  background-color: #cecece;
+  border-radius: 4px;
+  padding: 5px;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const ConfirmButton = styled.button`
   margin-left: 10px;
   font-size: 18px;
+  background-color: #cecece;
+  color: #545454;
+  padding: 3px 7px;
+  border-radius: 4px;
+  &:hover {
+    color: #cecece;
+    background-color: #545454;
+  }
 `;
 
 export const CancleButton = styled.button`
