@@ -35,6 +35,7 @@ export default function AsteroidsContainer() {
 
     function startGame() {
       SPACE_SHIP.setMainCanvas();
+      SCORE_MANAGER.setScoreManager();
       return setInterval(gameScreenUpdate, 10);
     }
 
