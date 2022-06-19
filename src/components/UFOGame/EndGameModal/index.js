@@ -12,7 +12,13 @@ import {
   PostScoreWrapper,
 } from './EndGameModal.styled';
 
-export default function EndGameModal({ isWin, answer, userName, onClick, score }) {
+export default function EndGameModal({
+  isWin,
+  answer,
+  userName,
+  onClick,
+  score,
+}) {
   const handleClickTryAgain = useCallback(() => {
     window.location.href = '/ufogame';
   }, []);
