@@ -27,7 +27,7 @@ export default function AsteroidsContainer() {
   useEffect(() => {
     function gameScreenUpdate() {
       ASTEROID_SPAWN_MANAGER.spawner();
-      SCORE_MANAGER.timer();
+      SCORE_MANAGER.runTimer();
       SPACE_SHIP.activate();
       Missile.render();
       Asteroid.render();
