@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { postScore } from '../../../api/score';
 
 import Dim from '../Dim';
 import ToastModal from '../ToastModal';
@@ -8,6 +9,7 @@ import EndGameModal from '../EndGameModal';
 import HowToDescription from '../HowToDescription';
 
 import { pickRandom, setLenArr, allIndexOf } from '../../../utils/UFOGame';
+import { loadItem } from '../../../utils/storage';
 
 import {
   ALPHABET_ARR,
@@ -36,6 +38,7 @@ import {
 } from './UFOGameContainer.styled';
 
 export default function UFOGameContainer() {
+  const [score, setScore] = useState(0);
   const [HowTo, setHowTo] = useState(false);
   const [isWin, setIsWin] = useState(false);
   const [failure, setFailure] = useState(0);
@@ -50,6 +53,9 @@ export default function UFOGameContainer() {
   const [isClickedArr, setIsClickedArr] = useState(
     Array(ALPHABET_ARR.length).fill(false)
   );
+
+  const userName = loadItem('userName');
+  const userEmail = loadItem('userEmail');
 
   const handleClickHowTo = useCallback(() => {
     setHowTo(true);
@@ -105,13 +111,13 @@ export default function UFOGameContainer() {
         setGuessWordsArr(guessArr);
         handleSuccess();
         if (targetArr.join('') === guessArr.join('')) {
-          handleWinGame();
+          handleWinGame(guessArr);
         }
       }
       if (!result.isIncludes) {
         const [newLife] = handleFailure(life, failure, imgNumber);
         if (newLife === 0) {
-          handleLoseGame();
+          handleLoseGame(guessArr);
         }
       }
       if (!handleCheckClickedAlpha(alpha)) {
@@ -121,19 +127,31 @@ export default function UFOGameContainer() {
     []
   );
 
-  const handleLoseGame = useCallback(() => {
+  const handleCalculateScore = useCallback(guessWordsArr => {
+    const regex = /^[a-z|A-Z]+$/;
+    const scoreArr = guessWordsArr.filter(elem => regex.test(elem));
+    setScore(scoreArr.length * 10);
+  });
+
+  const handleLoseGame = useCallback(guessWordsArr => {
     setIsWin(false);
     setShowEndGameModal(true);
+    handleCalculateScore(guessWordsArr);
   }, []);
 
-  const handleWinGame = useCallback(() => {
+  const handleWinGame = useCallback(guessWordsArr => {
     setIsWin(true);
     setShowEndGameModal(true);
+    handleCalculateScore(guessWordsArr);
   }, []);
 
   const handleClickReset = useCallback(() => {
     window.location.href = '/ufogame';
   }, []);
+
+  const handleClickPostScore = async score => {
+    await postScore(0, score, userName, userEmail);
+  };
 
   return (
     <OuterWrapper>
@@ -144,7 +162,13 @@ export default function UFOGameContainer() {
         <SubTitle>단어를 맞혀 우주선으로부터 뚱이를 구해 주세요!</SubTitle>
         {showModal && <ToastModal isCorrectAlpha={isCorrectAlpha} />}
         {showEndGameModal && (
-          <EndGameModal isWin={isWin} answer={targetWordsArr.join('')} />
+          <EndGameModal
+            isWin={isWin}
+            answer={targetWordsArr.join('')}
+            userName={userName}
+            onClick={() => handleClickPostScore(score)}
+            score={score}
+          />
         )}
         {!HowTo && (
           <HowToButton onClick={handleClickHowTo}>HOW TO PLAY?</HowToButton>
