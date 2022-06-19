@@ -7,6 +7,8 @@ import {
   SCORE_MANAGER,
   SPACE_SHIP,
 } from './utils/singletons.js';
+import { getAuth } from "firebase/auth";
+import { postScore } from "../../api/score";
 
 export default function AsteroidsContainer() {
   useEffect(() => {
@@ -81,9 +83,13 @@ export default function AsteroidsContainer() {
       clearInterval(game);
       clearInterval(endGameChecker);
       if (SPACE_SHIP.isSpaceShipDestroyed) {
+        const gameType = 3;
         const score = showGameResult();
-        //여기서 점수만 보내면 됨
-        //postScore(3, userName, score);
+        const auth = getAuth();
+        const userName = auth.currentUser?.displayName;
+        const userEmail = auth.currentUser?.email;
+
+        postScore(gameType, score, userName, userEmail);
       }
     }
 
