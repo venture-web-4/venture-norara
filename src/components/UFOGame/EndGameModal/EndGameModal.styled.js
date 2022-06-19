@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     }
   }
   width: 430px;
-  height: 500px;
+  height: auto;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   animation: popUp 0.2s ease;
-  padding: 22px 30px 30px 30px;
+  padding: 22px 30px 40px 30px;
 `;
 
 export const ModalImageLose = styled.div`
@@ -52,7 +52,7 @@ export const ModalTitleWrapper = styled.div`
 
 export const ModalAnnounce = styled.div`
   font-size: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 `;
 
 export const ModalAnswer = styled.div`
@@ -65,5 +65,9 @@ export const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 15px;
-  margin-top: 35px;
+  margin-top: 20px;
+`;
+
+export const PostScoreWrapper = styled.div`
+  margin-top: 20px;
 `;

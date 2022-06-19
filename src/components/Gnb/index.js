@@ -23,6 +23,7 @@ import {
 import { executeLogin, executeLogout, changeDisplayName } from '../../api/auth';
 // @debug
 import { getScores, postScore } from '../../api/score';
+import { clearItem, saveItem } from '../../utils/storage';
 
 export default function Gnb() {
   const auth = getAuth();
@@ -50,6 +51,8 @@ export default function Gnb() {
         console.log('login success');
         setIsLoggedIn(true);
         setUserName(res);
+        saveItem('userName', auth.currentUser.displayName);
+        saveItem('userEmail', auth.currentUser.email);
       } else {
         console.log('login failed');
         setIsLoggedIn(false);
@@ -62,6 +65,9 @@ export default function Gnb() {
     executeLogout();
     setIsLoggedIn(false);
     setUserName('');
+    window.location.href = '/';
+    clearItem('userName');
+    clearItem('userEmail');
   };
 
   // @debug
