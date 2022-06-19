@@ -7,8 +7,8 @@ import {
   SCORE_MANAGER,
   SPACE_SHIP,
 } from './utils/singletons.js';
-import { getAuth } from "firebase/auth";
-import { postScore } from "../../api/score";
+import { getAuth } from 'firebase/auth';
+import { postScore } from '../../api/score';
 
 export default function AsteroidsContainer() {
   useEffect(() => {
