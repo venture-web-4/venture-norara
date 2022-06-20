@@ -60,5 +60,5 @@
     "husky": "^8.0.1",
     "prettier": "^2.6.2"
   },
-  "proxy":"https://openapi.naver.com"
+  "proxy": "https://openapi.naver.com"
 }

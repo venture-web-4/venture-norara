@@ -16,12 +16,19 @@ import {
   RankingImg,
 } from './LandingHeader.styled';
 
+import { getScores } from '../../api/score'
+import { getAuth } from 'firebase/auth';
+
+
 export default function LandingHeader() {
   // MOCK DATA: 게임별 score 필터링해서 랭크 보여주기
   // nestedArray = [[username1, score1], [username2, score2],  ... ];
+  getAuth();
+  let scores2 = getScores(0).then(res=>console.log(res));
+
   const rankersOnUFOGame = [
-    ['4조', 600],
     ['페이커', 500],
+    ['4조', 600],
     ['홍진호', 400],
     ['2등진호', 300],
     ['버그픽서', 299],
