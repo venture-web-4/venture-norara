@@ -75,6 +75,7 @@ export default function Gnb() {
     let scores2 = await getScores(0);
     console.log(scores2);
   }
+
   async function handlePostScore() {
     function randomNum(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;

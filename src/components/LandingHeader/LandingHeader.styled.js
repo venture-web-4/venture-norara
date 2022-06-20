@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import '../../styles/landing.scss';
+import '../../styles/font.scss';
 
 export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 43%;
   left: 50%;
@@ -74,3 +77,46 @@ export const Announce = styled.div`
 `;
 
 export const ButtonWrapper = styled.div``;
+
+export const DescriptionWrapper = styled.div`
+  margin-right: 2.5vw;
+  margin-left: 3vw;
+`;
+
+export const RankingWrapper = styled.div`
+  width: auto;
+  padding: 30px 25px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  height: auto;
+  font-family: 'DungGeunMo';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const RankingTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: cetner;
+  margin-bottom: 20px;
+`;
+
+export const RankingImg = styled.div`
+  background-image: url('../../../img/question.gif');
+  width: 35px;
+  height: 35px;
+  background-size: 35px 35px;
+`;
+
+export const RankingTitle = styled.div`
+  font-size: 30px;
+  margin: 0 15px;
+  font-weight: 600;
+`;
+
+export const RankingEachGameWrapper = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+`;
