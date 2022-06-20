@@ -30,8 +30,8 @@ App.js 파일의 Route를 통해 작업한 Page 컴포넌트를 추가해주시�
 
 ```
 <Routes>
-  <Route path='/' element={<HomePage />} />
-  <Route path='/*' element={<NotFoundPage />} />
+  <Route path='/' element={<Landing />} />
+  <Route path='/*' element={<NotFound />} />
 </Routes>
 ```
 

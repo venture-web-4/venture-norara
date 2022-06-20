@@ -57,29 +57,29 @@ export default function CatWord() {
     }
   };
 
-  // useInterval(() => {
-  //   const value = status['time'];
-  //   setStatus({ ...status, time: value - 1 });
-  //   setSound(false);
-  // }, 1200);
+  useInterval(() => {
+    const value = status['time'];
+    setStatus({ ...status, time: value - 1 });
+    setSound(false);
+  }, 1200);
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get('/v1/search/encyc.json?query=공부', { 
+      const response = await axios.get(`/v1/search/encyc.json?query=안녕`, {
         headers: {
+          'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT,
+          'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
           'Content-Type': 'application/json',
-          'X-Naver-Client-Id': '7kxjOrxWw_28OOiCuUI5', 
-          'X-Naver-Client-Secret': 'UMCZI99Cj3'
         },
       });
-      console.log(response.data);
-    })()    
+      console.log('네이버 응답', response.data.items);
+    })();
 
     if (status['time'] === 0) {
       alert(`Game Over 고양이의 승리다냥!
       `);
       location.reload();
-    } 
+    }
 
     if (status['time'] === 5) {
       const value = status['time'];
