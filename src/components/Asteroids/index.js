@@ -45,6 +45,15 @@ export default function AsteroidsContainer() {
       }
     }
 
+    function checkURLSwitched() {
+      const url = window.location.href;
+      const page = url.slice(-9, url.length);
+
+      if (page !== 'asteroids') {
+        endGame();
+      }
+    }
+
     function showGameResult() {
       const restartKeys = ['r', 'R', 'ㄱ'];
       const timeElapsed = SCORE_MANAGER.timeElapsed;
@@ -82,20 +91,24 @@ export default function AsteroidsContainer() {
 
     function endGame() {
       clearInterval(game);
-      clearInterval(endGameChecker);
+      clearInterval(spaceShipDestroyedChecker);
+      clearInterval(urlSwitchedChecker);
+
       if (SPACE_SHIP.isSpaceShipDestroyed) {
         const gameType = 3;
         const score = showGameResult();
         const auth = getAuth();
         const userName = auth.currentUser?.displayName;
         const userEmail = auth.currentUser?.email;
-
-        postScore(gameType, score, userName, userEmail);
+        if (userName) {
+          postScore(gameType, score, userName, userEmail);
+        }
       }
     }
 
     const game = startGame();
-    const endGameChecker = setInterval(checkSpaceShipDestroyed, 10);
+    const spaceShipDestroyedChecker = setInterval(checkSpaceShipDestroyed, 10);
+    const urlSwitchedChecker = setInterval(checkURLSwitched, 10);
   }, []);
 
   return (
