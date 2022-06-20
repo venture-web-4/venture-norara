@@ -6,7 +6,7 @@ export class ScoreManager {
     this.nowTime = new Date().getTime();
     this.timeCounter = 0;
   }
-  
+
   setScoreManager() {
     this.collectCount = 0;
     this.timeElapsed = 0;

@@ -54,7 +54,6 @@ export default function AsteroidsContainer() {
       }
     }
 
-
     function showGameResult() {
       const restartKeys = ['r', 'R', 'ㄱ'];
       const timeElapsed = SCORE_MANAGER.timeElapsed;
