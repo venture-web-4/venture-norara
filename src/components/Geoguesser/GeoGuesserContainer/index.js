@@ -1,13 +1,12 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
-import Dim from '../../UFOGame/Dim';
-import ToastModal from '../../UFOGame/ToastModal';
-import AlphaButton from '../../UFOGame/AlphaButton';
-import BasicButton from '../../UFOGame/BasicButton';
-import EndGameModal from '../../UFOGame/EndGameModal';
-import HowToDescription from '../../UFOGame/HowToDescription';
+import Dim from '../Dim';
+import HowToDescription from '../HowToDescription';
+import BasicButton from '../BasicButton';
 
 import KakaoMap from '../KakaoMap';
+import { KakaoMapScript } from '../../../utils/GeoGuesser';
+import { saveItem, loadItem, clearItem } from '../../../utils/storage';
 
 import {
   OuterWrapper,
@@ -17,22 +16,37 @@ import {
   RowContainer,
   Title,
   SubTitle,
-  HowToButton,
+  TextWrapper,
   ImgWrapper,
 } from './GeoGuesserContainer.styled';
 
 export default function GeoGuesserContainer() {
-  const [HowTo, setHowTo] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showEndGameModal, setShowEndGameModal] = useState(false);
+  const [stage, setStage] = useState(0.5);
+  const [score, setScore] = useState(0);
 
-  const handleClickHowTo = useCallback(() => {
-    setHowTo(true);
+  const increaseStage = useCallback(() => {
+    saveItem('geoStage', stage + 0.5);
+    setScore(score + parseFloat(loadItem('geoScore')));
+    setStage(stage + 0.5);
+    if ((stage * 2) % 2 !== 0) {
+      KakaoMapScript();
+    }
+  }, [stage]);
+
+  useEffect(() => {
+    clearItem('geoStage');
+    clearItem('geoScore');
+    // @last : score 저장하는 로직 작성 중...
+    saveItem('geoStage', stage);
   });
 
-  const handleClickGoBack = useCallback(() => {
-    setHowTo(false);
-  });
+  // log score every 2 seconds
+  useEffect(() => {
+    console.log('score : ' + score);
+    console.log('stage : ' + stage);
+  }, [stage]);
 
   return (
     <OuterWrapper>
@@ -43,24 +57,34 @@ export default function GeoGuesserContainer() {
           <ColContainer>
             <Title>위치 맞추기</Title>
             <SubTitle>사진을 보고 위치를 맞혀보세요</SubTitle>
-            {!HowTo && (
-              <HowToButton onClick={handleClickHowTo}>HOW TO PLAY?</HowToButton>
+            {stage !== 0.5 ? (
+              <>
+                <ImgWrapper
+                  style={{
+                    backgroundImage: `url(../../../img/snu_${parseInt(
+                      stage
+                    )}.jpg)`,
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <TextWrapper>
+                  <HowToDescription />
+                  <BasicButton onClick={increaseStage} text={'시작'} />
+                </TextWrapper>
+              </>
             )}
-            <ImgWrapper />
           </ColContainer>
         </FlexItemWrapper>
-        {HowTo ? (
-          <FlexItemWrapper>
-            <ColContainer>
-              <HowToDescription />
-              <BasicButton onClick={handleClickGoBack} text={'돌아가기'} />
-            </ColContainer>
-          </FlexItemWrapper>
-        ) : (
-          <FlexItemWrapper>
-            <KakaoMap />
-          </FlexItemWrapper>
-        )}
+        <FlexItemWrapper>
+          {stage !== 0.5 ? (
+            <button onClick={() => increaseStage()}>정답 제출</button>
+          ) : (
+            <button></button>
+          )}
+          <KakaoMap />
+        </FlexItemWrapper>
       </FlexBoxWrapper>
     </OuterWrapper>
   );
