@@ -25,6 +25,14 @@ export default function Category() {
             bgSize={'100% 100%'}
           />
         </StyledLink>
+        <StyledLink to='/geoguesser'>
+          <CategoryItem
+            title={'사진 위치 맞추기'}
+            desc={'사진을 보고 위치를 맞혀보세요!'}
+            bgImg={'../../../img/geoguesser.png'}
+            bgSize={'100% 100%'}
+          />
+        </StyledLink>
         <StyledLink to='/category'>
           <CategoryItem
             title={'ㅤ냥이와ㅤ끝말잇기'}
@@ -38,14 +46,6 @@ export default function Category() {
             title={'소행성을 부숴라!'}
             desc={'쾌적한 우주 여행을 위해 소행성을 제거해주세요!'}
             bgImg={'../../../img/asteroid.png'}
-            bgSize={'100% 100%'}
-          />
-        </StyledLink>
-        <StyledLink to='/geoguesser'>
-          <CategoryItem
-            title={'사진 위치 맞추기'}
-            desc={'사진을 보고 위치를 맞혀보세요!'}
-            bgImg={'../../../img/geoguesser.png'}
             bgSize={'100% 100%'}
           />
         </StyledLink>

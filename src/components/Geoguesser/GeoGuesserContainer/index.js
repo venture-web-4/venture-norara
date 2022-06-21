@@ -52,7 +52,7 @@ export default function GeoGuesserContainer() {
   }, [stage]);
 
   const handleClickPostScore = async scoreSum => {
-    await postScore(3, scoreSum / 12, userName, userEmail);
+    await postScore(1, scoreSum / 12, userName, userEmail);
   };
 
   useEffect(() => {
