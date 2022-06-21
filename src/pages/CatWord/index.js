@@ -68,20 +68,18 @@ export default function CatWord() {
   // }, 1200);
 
   useEffect(() => {
+    // 테스트용 axios 요청
     (async () => {
-      const response = await axios.get(`/v1/search/encyc.json?query=안녕`, {
-        headers: {
-          'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT,
-          'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log('네이버 응답', response.data.items);
+      const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
+      const word = '야옹';
+      const res = await axios.get(
+        `/api/search?key=${apiKey}&q=${word}&req_type=json`
+      );
+      console.log(res);
     })();
 
     if (status['time'] === 0) {
-      alert(`Game Over 고양이의 승리다냥!
-      `);
+      alert(`Game Over 고양이의 승리다냥!`);
       location.reload();
     }
 

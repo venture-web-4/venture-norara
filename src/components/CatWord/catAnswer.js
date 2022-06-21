@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { apiKey } from '../../constants/wordRelayApiKey';
 
 const api = word => {
   return word[word.length - 1] + '기기기기';
 };
 
 const getUrl = word => {
-  return `/search?key=${apiKey}&q=${word}`
+  const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
+  return `/api/search?key=${apiKey}&q=${word}&req_type=json`
 }
 
 const sendRequest = (word) => {
   return axios({
     url: getUrl(word),
     method: 'GET',
-  }).then(res => console.log(res))
+  }).then(res => console.log(res));
 }
 
 export const catAnswer = ({ word, setWordList, point, setSound }) => {
