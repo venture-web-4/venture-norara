@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import '../../styles/font.scss';
 
 const dancingCat = keyframes`
   0% {
@@ -39,22 +40,25 @@ export const StyledGameWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 50%;
+  width: 60%;
   height: 70%;
   background-color: white;
   padding: 30px;
   border-radius: 30px;
-  justify-content: space-around;
+  background-color:rgba(10,170,150, 0.3);
+  box-sizing:border-box;
+  box-shadow: 0px 3px 30px 7px rgba(0, 0, 0, 0.08);
 `;
 
 export const StyledWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: rgba(100, 190, 100);
+  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: DungGeunMo;
 `;
 
 export const StyledStatusBar = styled.div`
@@ -74,13 +78,11 @@ export const StyledBarWrapper = styled.div`
 export const StyledGameBoard = styled.div`
   border: 2px solid black;
   height: 300px;
+  width:100%;
   border-radius: 30px;
-  overflow: auto;
+  overflow-y: scroll;
   padding: 20px;
   margin-bottom: 10px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const StyledWordInput = styled.input`
@@ -113,3 +115,10 @@ export const StyledGameLine = styled.div`
   color: ${props => props.color || 'black'};
   margin: 10px 0;
 `;
+
+export const StyledInputWrapper = styled.div`
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  justify-content:space-around;
+`

@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { apiKey } from '../../constants/wordRelayApiKey';
 
 const api = word => {
   return word[word.length - 1] + '기기기기';
 };
+
+export const wordRelay = () => {
+  fetch(`https://opendict.korean.go.kr/api/search?key=${apiKey}&q=안녕`).then(
+    res => console.log(res)
+  );
+};
+
 
 export const catAnswer = ({ word, setWordList, point, setSound }) => {
   if (point === 20) {

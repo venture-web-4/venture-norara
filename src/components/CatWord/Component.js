@@ -1,12 +1,13 @@
-import useInterval from '../hooks/useInterval';
-import { useState } from 'react';
+import useInterval from '../../hooks/useInterval';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import {
   StyledMeow,
   StyledGameBoard,
   StyledInputButton,
   StyledWordInput,
   StyledGameLine,
-} from '../styles/StyledCatWordComponents';
+  StyledInputWrapper,
+} from '../../pages/CatWord/CatWord.Styled';
 
 export function Component1({ checkWord }) {
   const [inputValue, setInputValue] = useState('');
@@ -16,7 +17,7 @@ export function Component1({ checkWord }) {
   };
 
   return (
-    <>
+    <StyledInputWrapper>
       <StyledWordInput
         value={inputValue}
         onChange={e => {
@@ -36,7 +37,7 @@ export function Component1({ checkWord }) {
       >
         제출
       </StyledInputButton>
-    </>
+    </StyledInputWrapper>
   );
 }
 
@@ -47,15 +48,27 @@ export function Component3({ wordList }) {
 
   // 그 결과에 따라 alert창을 띄우거나 리스트에 값을 추가하는 식으로 구현하면 된다.
 
+  const scrollRef = useRef();
+
+  const scrollToBottom = useCallback(() => {
+    if(scrollRef) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  },[]);
+
+  useEffect(()=>{
+    scrollToBottom();
+  },[wordList])
+
   return (
     <>
       <StyledGameBoard>
-        {wordList.map((word, index) => (
-          <StyledGameLine color={word['color']} key={index}>
-            {word['text']}
-          </StyledGameLine>
-        ))}
-        {/* map 함수로 펼칠 예정 */}
+          {wordList.map((word, index) => (
+            <StyledGameLine color={word['color']} key={index}>
+              {word['text']}
+            </StyledGameLine>
+          ))}
+        <div ref={scrollRef} />
       </StyledGameBoard>
     </>
   );

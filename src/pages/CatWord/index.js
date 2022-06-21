@@ -4,8 +4,8 @@ import ReactHowler from 'react-howler';
 import axios from 'axios';
 
 //Components
-import { Component1, Component3, Component4 } from '../../components/Component';
-import { catAnswer } from '../../components/catAnswer';
+import { Component1, Component3, Component4 } from '../../components/CatWord/Component';
+import { catAnswer } from '../../components/CatWord/catAnswer';
 
 //Static Source
 import Cat from '../../img/cat.png';
@@ -19,7 +19,7 @@ import {
   StyledStatusBar,
   StyledBarWrapper,
   StyledGameWrapperPart,
-} from '../../styles/StyledCatWordComponents';
+} from './CatWord.Styled';
 
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '제시어', color: 'red' }]);
@@ -57,11 +57,11 @@ export default function CatWord() {
     }
   };
 
-  useInterval(() => {
-    const value = status['time'];
-    setStatus({ ...status, time: value - 1 });
-    setSound(false);
-  }, 1200);
+  // useInterval(() => {
+  //   const value = status['time'];
+  //   setStatus({ ...status, time: value - 1 });
+  //   setSound(false);
+  // }, 1200);
 
   useEffect(() => {
     (async () => {
@@ -103,10 +103,8 @@ export default function CatWord() {
                 제한시간 : {status['time']}
               </StyledStatusBar>
             </StyledBarWrapper>
-            <div>
-              <Component3 wordList={wordList} />
-              <Component1 checkWord={checkWord} />
-            </div>
+            <Component3 wordList={wordList} />
+            <Component1 checkWord={checkWord} />
           </StyledGameWrapperPart>
         </StyledGameWrapper>
       </StyledWrapper>
