@@ -16,15 +16,14 @@ import {
   RankingImg,
 } from './LandingHeader.styled';
 
-import { getScores } from '../../api/score'
+import { getScores } from '../../api/score';
 import { getAuth } from 'firebase/auth';
-
 
 export default function LandingHeader() {
   // MOCK DATA: 게임별 score 필터링해서 랭크 보여주기
   // nestedArray = [[username1, score1], [username2, score2],  ... ];
   getAuth();
-  let scores2 = getScores(0).then(res=>console.log(res));
+  let scores2 = getScores(0).then(res => console.log(res));
 
   const rankersOnUFOGame = [
     ['페이커', 500],
