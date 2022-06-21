@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getScores } from '../../api/score';
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
+
 import {
   Announce,
   AnnuonceWrapper,
