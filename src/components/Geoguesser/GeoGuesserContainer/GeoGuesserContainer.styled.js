@@ -9,6 +9,58 @@ export const OuterWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
+
+  @-webkit-keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-o-keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  background: linear-gradient(137deg, #c6e4e4, #84a6d5, #fc8d9c);
+  background-size: 800% 800%;
+  -webkit-animation: wave 8s ease infinite;
+  -moz-animation: wave 8s ease infinite;
+  -o-animation: wave 8s ease infinite;
+  animation: wave 8s ease infinite;
 `;
 
 export const FlexBoxWrapper = styled.div`
@@ -22,6 +74,7 @@ export const FlexBoxWrapper = styled.div`
   box-shadow: 0px 3px 30px 7px rgba(0, 0, 0, 0.08);
   border-radius: 30px;
   padding: 30px;
+  margin-top: 30px;
 `;
 
 export const FlexItemWrapper = styled.div`
@@ -45,12 +98,14 @@ export const RowContainer = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  width: 800px;
+  width: 700px;
   height: 540px;
   background-image: url('../../../img/mapsnap.png');
-  background-size: contain;
+  background-size: 700px 540px;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 15px;
+  margin: 0 40px;
 `;
 
 export const TextWrapper = styled.div`
