@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useState } from 'react';
+import { getScores } from '../../api/score';
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
 import {
@@ -17,61 +19,28 @@ import {
 } from './LandingHeader.styled';
 
 export default function LandingHeader() {
-  // MOCK DATA: 게임별 score 필터링해서 랭크 보여주기
-  // nestedArray = [[username1, score1], [username2, score2],  ... ];
-  const rankersOnUFOGame = [
-    ['4조', 600],
-    ['페이커', 500],
-    ['홍진호', 400],
-    ['2등진호', 300],
-    ['버그픽서', 299],
-    ['으라차차빈재윤', 200],
-    ['기몌지', 100],
-    ['욱병최!', 20],
-    ['내가 게임의신', 10],
-    ['정정정', 5],
-  ];
+  const [rankersOnUFOGame, setRankersOnUFOGame] = useState();
+  const [rankersOnGeoguesser, setRankersOnGeoguesser] = useState();
+  const [rankersOnCatGame, setRankersOnCatGame] = useState();
+  const [rankersOnAsteroids, setRankersOnAsteroids] = useState();
 
-  const rankersOnGeoguesser = [
-    ['4조', 600],
-    ['페이커', 500],
-    ['홍진호', 400],
-    ['2등진호', 300],
-    ['버그픽서', 299],
-    ['으라차차빈재윤', 200],
-    ['기몌지', 100],
-    ['욱병최!', 20],
-    ['내가 게임의신', 10],
-    ['정정정', 5],
-  ];
+  useEffect(() => {
+    (async () => {
+      setRankersOnUFOGame(await handleGetScoresArr(0));
+      setRankersOnGeoguesser(await handleGetScoresArr(1));
+      setRankersOnCatGame(await handleGetScoresArr(2));
+      setRankersOnAsteroids(await handleGetScoresArr(3));
+    })();
+  }, []);
 
-  const rankersOnCatGame = undefined;
+  const handleGetScoresArr = useCallback(async gameNum => {
+    const resultArr = [];
+    const rankingArr = await getScores(gameNum);
+    rankingArr.forEach(el => resultArr.push([el?.username, el?.score]));
+    const targetArr = resultArr.sort((a, b) => b[1] - a[1]);
 
-  // const rankersOnCatGame = [
-  //   ['4조', 600],
-  //   ['페이커', 500],
-  //   ['홍진호', 400],
-  //   ['2등진호', 300],
-  //   ['버그픽서', 299],
-  //   ['으라차차빈재윤', 200],
-  //   ['기몌지', 100],
-  //   ['욱병최!', 20],
-  //   ['내가 게임의신', 10],
-  //   ['정정정', 5],
-  // ];
-
-  const rankersOnAsteroids = [
-    ['4조', 600],
-    ['페이커', 500],
-    ['홍진호', 400],
-    ['2등진호', 300],
-    ['버그픽서', 299],
-    ['으라차차빈재윤', 200],
-    ['기몌지', 100],
-    ['욱병최!', 20],
-    ['내가 게임의신', 10],
-    ['정정정', 5],
-  ];
+    return targetArr;
+  }, []);
 
   return (
     <Wrapper>
@@ -98,7 +67,6 @@ export default function LandingHeader() {
         </RankingTitleWrapper>
 
         <RankingEachGameWrapper>
-          {/* Ranking 하나씩 추가하면 column 하나 생김 */}
           <Ranking title={'UFO GAME'} data={rankersOnUFOGame} />
           <Ranking title={'위치를 찾아라!'} data={rankersOnGeoguesser} />
           <Ranking title={'냥이와 끝말잇기'} data={rankersOnCatGame} />

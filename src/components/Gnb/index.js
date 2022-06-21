@@ -21,8 +21,6 @@ import {
 } from './ToastModal/ToastModal.styled';
 
 import { executeLogin, executeLogout, changeDisplayName } from '../../api/auth';
-// @debug
-import { getScores, postScore } from '../../api/score';
 import { clearItem, saveItem } from '../../utils/storage';
 
 export default function Gnb() {
@@ -70,25 +68,6 @@ export default function Gnb() {
     clearItem('userEmail');
   };
 
-  // @debug
-  async function handleGetScores() {
-    let scores2 = await getScores(0);
-    console.log(scores2);
-  }
-
-  async function handlePostScore() {
-    function randomNum(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-    }
-    if (auth.currentUser) {
-      let gametype = randomNum(0, 3);
-      let score = randomNum(0, 200);
-      let username = auth.currentUser.displayName;
-      let email = auth.currentUser.email;
-      await postScore(gametype, score, username, email);
-    }
-  }
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (auth.currentUser) {
@@ -111,10 +90,6 @@ export default function Gnb() {
       </NavigatorWrapper>
 
       <AuthWrapper>
-        {/* @debug */}
-        <SigninWrapper onClick={handlePostScore}>post테스트</SigninWrapper>
-        <SigninWrapper onClick={handleGetScores}>get테스트</SigninWrapper>
-        {/* 회원가입, 로그인, 로그아웃 구현 */}
         {userName ? (
           <SignupWrapper onClick={toggleModal}>{userName}</SignupWrapper>
         ) : (

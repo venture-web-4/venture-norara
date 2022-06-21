@@ -9,6 +9,9 @@ import {
 } from './Ranking.styled';
 
 export default function Ranking({ title, data }) {
+  if (!Array.isArray(data)) {
+    data = undefined;
+  }
   return (
     <Wrapper>
       <GameTitle>{title}</GameTitle>
