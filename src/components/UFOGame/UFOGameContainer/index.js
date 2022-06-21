@@ -151,6 +151,7 @@ export default function UFOGameContainer() {
 
   const handleClickPostScore = async score => {
     await postScore(0, score, userName, userEmail);
+    window.location.href = '/ufogame';
   };
 
   return (

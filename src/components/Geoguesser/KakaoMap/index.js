@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import KakaoMapScript from '../../../utils/GeoGuesser';
+import { KakaoMapScript } from '../../../utils/GeoGuesser';
 
 export default function KakaoMap() {
   useEffect(() => {
@@ -11,9 +11,10 @@ export default function KakaoMap() {
     <div
       id='kakaoMap'
       style={{
-        minWidth: '50vw',
+        minWidth: '30vw',
         minHeight: '70vh',
         height: 'auto',
+        borderRadius: '10px',
       }}
     ></div>
   );

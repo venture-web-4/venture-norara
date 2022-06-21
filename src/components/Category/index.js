@@ -25,7 +25,15 @@ export default function Category() {
             bgSize={'100% 100%'}
           />
         </StyledLink>
-        <StyledLink to='/catword'>
+        <StyledLink to='/geoguesser'>
+          <CategoryItem
+            title={'사진 위치 맞추기'}
+            desc={'사진을 보고 위치를 맞혀보세요!'}
+            bgImg={'../../../img/geoguesser.png'}
+            bgSize={'100% 100%'}
+          />
+        </StyledLink>
+        <StyledLink to='/category'>
           <CategoryItem
             title={'ㅤ냥이와ㅤ끝말잇기'}
             desc={'아주 똑똑한 고양이와 끝말잇기 대결! 이길 수 있을까요?'}
