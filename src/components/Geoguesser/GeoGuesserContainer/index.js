@@ -55,7 +55,7 @@ export default function GeoGuesserContainer() {
       <FlexBoxWrapper>
         <FlexItemWrapper>
           <ColContainer>
-            <Title>위치 맞추기</Title>
+            <Title>사진 위치 맞추기</Title>
             <SubTitle>사진을 보고 위치를 맞혀보세요</SubTitle>
             {stage !== 0.5 ? (
               <>

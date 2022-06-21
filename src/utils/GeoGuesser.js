@@ -1,7 +1,7 @@
 const { kakao } = window;
 import { saveItem, loadItem } from './storage';
 
-export function KakaoMapScript() {
+export function KakaoMapScript(reset = false) {
   const container = document.getElementById('kakaoMap');
   const options = {
     center: new kakao.maps.LatLng(37.460716, 126.953223),
@@ -19,14 +19,13 @@ export function KakaoMapScript() {
     new kakao.maps.LatLng(37.44969849972222, 126.95250579972223), //snu_5.jpg
     new kakao.maps.LatLng(37.46616625058365, 126.954473689774), //snu_6.jpg
     new kakao.maps.LatLng(37.4611518, 126.952149), //snu_7.jpg
-    new kakao.maps.LatLng(37.46800149972223, 126.95182189972222), //snu_8.jpg
-    new kakao.maps.LatLng(37.458943599722225, 126.9502935), //snu_9.jpg
-    new kakao.maps.LatLng(37.467597599722225, 126.9517802), //snu_10.jpg
-    new kakao.maps.LatLng(37.4626164, 126.9579633), //snu_11.jpg
-    new kakao.maps.LatLng(37.462783899722226, 126.95031409972222), //snu_12.jpg
-    new kakao.maps.LatLng(37.459227599722226, 126.95132279972222), //snu_13.jpg
-    new kakao.maps.LatLng(37.453320599722225, 126.95338089972222), //snu_14.jpg
-    new kakao.maps.LatLng(37.460039972222226, 126.951564), //snu_15.jpg
+    new kakao.maps.LatLng(37.458943599722225, 126.9502935), //snu_8.jpg
+    new kakao.maps.LatLng(37.467597599722225, 126.9517802), //snu_9.jpg
+    new kakao.maps.LatLng(37.4626164, 126.9579633), //snu_10.jpg
+    new kakao.maps.LatLng(37.462783899722226, 126.95031409972222), //snu_11.jpg
+    new kakao.maps.LatLng(37.459227599722226, 126.95132279972222), //snu_12.jpg
+    new kakao.maps.LatLng(37.453320599722225, 126.95338089972222), //snu_13.jpg
+    new kakao.maps.LatLng(37.460039972222226, 126.951564), //snu_14.jpg
   ];
 
   // draw rectangle on the center of the map
@@ -44,32 +43,19 @@ export function KakaoMapScript() {
   });
 
   // set markers from image_locations
-  for (let i = 0; i < image_locations.length; i++) {
-    // let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
-    // let imageSize = new kakao.maps.Size(40, 40);
-    // let imageOption = {
-    //   offset: new kakao.maps.Point(20, 40),
-    // };
-    // let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-    // let marker = new kakao.maps.Marker({
-    //   position: image_locations[i],
-    //   image: markerImage,
-    // });
-    // set marker explaination
-    let icon = new kakao.maps.CustomOverlay({
-      content: `
-        <div class="marker-content">
-          <div class="marker-title">
-            <span>${i + 1}</span>
-          </div>
-          </div> 
-        </div>`,
-      position: image_locations[i],
-      map: map,
-    });
-
-    // marker.setMap(map);
-  }
+  // for (let i = 0; i < image_locations.length; i++) {
+  //   let icon = new kakao.maps.CustomOverlay({
+  //     content: `
+  //       <div class="marker-content">
+  //         <div class="marker-title">
+  //           <span>${i + 1}</span>
+  //         </div>
+  //         </div>
+  //       </div>`,
+  //     position: image_locations[i],
+  //     map: map,
+  //   });
+  // }
 
   let mouse_marker;
   kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
@@ -99,7 +85,64 @@ export function KakaoMapScript() {
     });
   });
 
+  const button = document.getElementById('geoguesser-submit');
+
+  // if button is clicked
+  let icon;
+  button.addEventListener('click', () => {
+    // delay for 1 second, and execute the following code
+
+    const showAnswer = () => {
+      let stage = parseFloat(loadItem('geoStage'));
+      console.log('stagestagestage', stage);
+      if ((stage * 2) % 2 === 1) {
+        if (icon) icon.setMap(null);
+        icon = new kakao.maps.CustomOverlay({
+          content: `
+              <div class="marker-content" style=
+              "
+              align-items: center;
+              display: flex;
+              flex-direction: column;
+              ">
+                <img src='img/marker.png' alt="marker" width="30px" height="46px" />
+                <div class="marker-title"
+                  <span style="color: green ; font-size: 24px;">
+                    정답
+                  </span>
+                </div>
+              </div>`,
+          position: image_locations[parseInt(stage) - 1],
+          map: map,
+        });
+        map.setCenter(image_locations[parseInt(stage) - 1]);
+      } else {
+        icon.setMap(null);
+        mouse_marker.setMap(null);
+      }
+    };
+
+    setTimeout(function () {
+      showAnswer();
+    }, 100);
+  });
+
   kakao.maps.event.addListener(map, 'mouseover', function (mouseEvent) {
     map.setCursor('crosshair');
+    // let stage = parseFloat(loadItem('geoStage'));
+    // console.log("stagestagestage",stage)
+    // if(stage*2%2 !== 0) {
+    //   let icon = new kakao.maps.CustomOverlay({
+    //         content: `
+    //           <div class="marker-content">
+    //             <div class="marker-title">
+    //               <span>정답</span>
+    //             </div>
+    //             </div>
+    //           </div>`,
+    //         position: image_locations[stage],
+    //         map: map,
+    //       });
+    // }
   });
 }
