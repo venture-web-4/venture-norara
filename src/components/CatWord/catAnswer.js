@@ -7,15 +7,15 @@ const api = word => {
 
 const getUrl = word => {
   const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
-  return `/api/search?key=${apiKey}&q=${word}&req_type=json`
-}
+  return `/api/search?key=${apiKey}&q=${word}&req_type=json`;
+};
 
-const sendRequest = (word) => {
+const sendRequest = word => {
   return axios({
     url: getUrl(word),
     method: 'GET',
   }).then(res => console.log(res));
-}
+};
 
 export const catAnswer = ({ word, setWordList, point, setSound }) => {
   sendRequest(word);
