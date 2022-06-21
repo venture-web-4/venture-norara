@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px 40px 20px 20px;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
 `;
 
 export const ImgWrapper = styled.div`

@@ -14,6 +14,7 @@ export default function KakaoMap() {
         minWidth: '30vw',
         minHeight: '70vh',
         height: 'auto',
+        borderRadius: '10px',
       }}
     ></div>
   );
