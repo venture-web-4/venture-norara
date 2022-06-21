@@ -45,8 +45,8 @@ export const StyledGameWrapper = styled.div`
   background-color: white;
   padding: 30px;
   border-radius: 30px;
-  background-color:rgba(10,170,150, 0.3);
-  box-sizing:border-box;
+  background-color: rgba(10, 170, 150, 0.3);
+  box-sizing: border-box;
   box-shadow: 0px 3px 30px 7px rgba(0, 0, 0, 0.08);
 `;
 
@@ -78,7 +78,7 @@ export const StyledBarWrapper = styled.div`
 export const StyledGameBoard = styled.div`
   border: 2px solid black;
   height: 300px;
-  width:100%;
+  width: 100%;
   border-radius: 30px;
   overflow-y: scroll;
   padding: 20px;
@@ -117,8 +117,8 @@ export const StyledGameLine = styled.div`
 `;
 
 export const StyledInputWrapper = styled.div`
-  display:flex;
-  flex-direction:row;
-  width:100%;
-  justify-content:space-around;
-`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+`;

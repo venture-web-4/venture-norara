@@ -12,7 +12,6 @@ export const wordRelay = () => {
   );
 };
 
-
 export const catAnswer = ({ word, setWordList, point, setSound }) => {
   if (point === 20) {
     alert('왜 이렇게 잘하냐옹! 이제 더 이상 봐주지 않겠냐옹!');

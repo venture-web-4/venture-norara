@@ -51,23 +51,23 @@ export function Component3({ wordList }) {
   const scrollRef = useRef();
 
   const scrollToBottom = useCallback(() => {
-    if(scrollRef) {
+    if (scrollRef) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  },[]);
+  }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     scrollToBottom();
-  },[wordList])
+  }, [wordList]);
 
   return (
     <>
       <StyledGameBoard>
-          {wordList.map((word, index) => (
-            <StyledGameLine color={word['color']} key={index}>
-              {word['text']}
-            </StyledGameLine>
-          ))}
+        {wordList.map((word, index) => (
+          <StyledGameLine color={word['color']} key={index}>
+            {word['text']}
+          </StyledGameLine>
+        ))}
         <div ref={scrollRef} />
       </StyledGameBoard>
     </>

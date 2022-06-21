@@ -4,7 +4,11 @@ import ReactHowler from 'react-howler';
 import axios from 'axios';
 
 //Components
-import { Component1, Component3, Component4 } from '../../components/CatWord/Component';
+import {
+  Component1,
+  Component3,
+  Component4,
+} from '../../components/CatWord/Component';
 import { catAnswer } from '../../components/CatWord/catAnswer';
 
 //Static Source
