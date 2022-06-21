@@ -108,5 +108,4 @@ export const KeyboardImg = styled.div`
   background-size: 30px 35px;
 `;
 
-export const MinorDescription = styled.div`
-`;
+export const MinorDescription = styled.div``;

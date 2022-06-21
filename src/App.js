@@ -6,7 +6,7 @@ import NotFound from './pages/NotFound';
 import UFOGame from './pages/UFOGame';
 import GeoGuesser from './pages/GeoGuesser';
 import Asteroids from './pages/Asteroids';
-import PreAsteroids from "./pages/PreAsteroids";
+import PreAsteroids from './pages/PreAsteroids';
 
 export default function App() {
   return (

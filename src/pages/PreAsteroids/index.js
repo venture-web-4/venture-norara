@@ -3,11 +3,11 @@ import Gnb from '../../components/Gnb';
 import HowToAsteroids from '../../components/HowToAsteroids';
 
 export default function PreAsteroids() {
-    return (
-        <>
-            <Gnb />
-            <HowToAsteroids />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Gnb />
+      <HowToAsteroids />
+      <Footer />
+    </>
+  );
 }

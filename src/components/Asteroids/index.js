@@ -136,7 +136,9 @@ export default function AsteroidsContainer() {
         </MinorDescription>
         <MouseWrapper>
           <MouseImg />
-          <GameKeyDescription>{'우주선 이동: 검은 캔버스 마우스 좌클릭'}</GameKeyDescription>
+          <GameKeyDescription>
+            {'우주선 이동: 검은 캔버스 마우스 좌클릭'}
+          </GameKeyDescription>
         </MouseWrapper>
         <KeyboardWrapper>
           <KeyboardImg />
