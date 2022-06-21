@@ -8,7 +8,7 @@ export const OuterWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 100vh;
 `;
 
 export const FlexBoxWrapper = styled.div`
@@ -17,7 +17,7 @@ export const FlexBoxWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  align-items: center;
+  align-items: end;
   background-color: #fff;
   box-shadow: 0px 3px 30px 7px rgba(0, 0, 0, 0.08);
   border-radius: 30px;
@@ -29,6 +29,7 @@ export const FlexItemWrapper = styled.div`
   flex-shrink: 1;
   flex-grow: 1;
   align-items: center;
+  // border: 1px solid #000;
 `;
 
 export const ColContainer = styled.div`
@@ -44,23 +45,22 @@ export const RowContainer = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  width: 400px;
-  height: 300px;
-  background-image: url('../../../img/ufo6.png');
-  background-size: 400px 300px;
+  width: 800px;
+  height: 540px;
+  background-image: url('../../../img/mapsnap.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
-export const HowToButton = styled.button`
-  margin: 10px 0 20px 0;
-  background-color: #90a099;
-  padding: 0 10px;
-  border-radius: 20px;
-  color: #fff;
-  box-shadow: 0px 3px 10px 5px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    transform: translateY(3.5px);
-  }
+export const TextWrapper = styled.div`
+  width: 800px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Title = styled.div`
@@ -69,6 +69,6 @@ export const Title = styled.div`
 `;
 
 export const SubTitle = styled.div`
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 600;
 `;

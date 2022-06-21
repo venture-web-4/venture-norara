@@ -41,6 +41,14 @@ export default function Category() {
             bgSize={'100% 100%'}
           />
         </StyledLink>
+        <StyledLink to='/geoguesser'>
+          <CategoryItem
+            title={'사진 위치 맞추기'}
+            desc={'사진을 보고 위치를 맞혀보세요!'}
+            bgImg={'../../../img/geoguesser.png'}
+            bgSize={'100% 100%'}
+          />
+        </StyledLink>
       </ContentWrapper>
     </Wrapper>
   );
