@@ -26,9 +26,9 @@ import {
 } from './CatWord.Styled';
 
 export default function CatWord() {
-  const [wordList, setWordList] = useState([{ text: '제시어', color: 'red' }]);
+  const [wordList, setWordList] = useState([{ text: '고양이', color: 'red' }]);
   const [point, setPoint] = useState(0);
-  const [status, setStatus] = useState({ time: 15, color: 'black' });
+  const [status, setStatus] = useState({ time: 9, color: 'black' });
   const [sound, setSound] = useState(false);
 
   const checkWord = word => {
@@ -85,7 +85,7 @@ export default function CatWord() {
       location.reload();
     }
 
-    if (status['time'] === 5) {
+    if (status['time'] === 3) {
       const value = status['time'];
       setStatus({ ...status, color: 'red' });
     }
