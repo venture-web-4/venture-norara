@@ -7,15 +7,15 @@ const api = word => {
 };
 
 const getUrl = word => {
-  return `/search?key=${apiKey}&q=${word}`
-}
+  return `/search?key=${apiKey}&q=${word}`;
+};
 
-const sendRequest = (word) => {
+const sendRequest = word => {
   return axios({
     url: getUrl(word),
     method: 'GET',
-  }).then(res => console.log(res))
-}
+  }).then(res => console.log(res));
+};
 
 export const catAnswer = ({ word, setWordList, point, setSound }) => {
   sendRequest(word);
