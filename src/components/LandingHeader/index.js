@@ -1,5 +1,6 @@
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
+
 import {
   Announce,
   AnnuonceWrapper,
@@ -17,17 +18,28 @@ import {
 } from './LandingHeader.styled';
 
 import { getScores } from '../../api/score';
-import { getAuth } from 'firebase/auth';
+import { getDefaultNormalizer } from '@testing-library/react';
+import { useEffect,useState } from 'react';
 
 export default function LandingHeader() {
   // MOCK DATA: 게임별 score 필터링해서 랭크 보여주기
   // nestedArray = [[username1, score1], [username2, score2],  ... ];
-  getAuth();
-  let scores2 = getScores(0).then(res => console.log(res));
+
+  const getRanking = async () => {
+    let rankerList = []
+    const response = await getScores(0)
+    response.forEach(item => {rankerList.push([item['username'], item['score']])})
+    return rankerList
+  }
+
+  useEffect(()=>{
+    console.log("promise에러")
+  })
+
 
   const rankersOnUFOGame = [
-    ['페이커', 500],
     ['4조', 600],
+    ['페이커', 500],
     ['홍진호', 400],
     ['2등진호', 300],
     ['버그픽서', 299],
