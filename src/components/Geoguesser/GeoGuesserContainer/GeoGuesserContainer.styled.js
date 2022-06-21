@@ -57,6 +57,7 @@ export const TextWrapper = styled.div`
   width: 800px;
   height: 540px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -68,6 +69,6 @@ export const Title = styled.div`
 `;
 
 export const SubTitle = styled.div`
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 600;
 `;

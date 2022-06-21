@@ -8,7 +8,7 @@ import {
 export default function HowToDescription() {
   return (
     <Wrapper>
-      <ImgWrapper></ImgWrapper>
+      {/* <ImgWrapper></ImgWrapper> */}
       <RuleWrapper>
         <Rule>서울대 안에서 찍은 사진을 보고 위치를 맞혀보세요!</Rule>
         <Rule></Rule>
