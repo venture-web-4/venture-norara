@@ -9,6 +9,58 @@ export const OuterWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
+
+  @-webkit-keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-o-keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  background: linear-gradient(137deg, #c6e4e4, #84a6d5, #fc8d9c);
+  background-size: 800% 800%;
+  -webkit-animation: wave 8s ease infinite;
+  -moz-animation: wave 8s ease infinite;
+  -o-animation: wave 8s ease infinite;
+  animation: wave 8s ease infinite;
 `;
 
 export const Wrapper = styled.div`

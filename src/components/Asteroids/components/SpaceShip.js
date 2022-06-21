@@ -17,6 +17,20 @@ export class SpaceShip extends GameObject {
     document.addEventListener('keyup', this.stopFire.bind(this), false);
   }
 
+  initialize() {
+    this.fireCoolTime = 0;
+    this.xPos = 250;
+    this.yPos = 250;
+    this.xDestination = this.xPos;
+    this.yDestination = this.yPos;
+    this.xDirectionVector = 1;
+    this.yDirectionVector = 0;
+    this.leftRotation = 0;
+    this.rotation = 0;
+    this.isFire = false;
+    this.fireCoolTime = 0;
+  }
+
   setMainCanvas() {
     const mainCanvas = document.getElementById('main-canvas');
     if (mainCanvas !== null && mainCanvas !== undefined) {

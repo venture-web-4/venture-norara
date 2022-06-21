@@ -9,6 +9,15 @@ import {
 } from './utils/singletons.js';
 import { getAuth } from 'firebase/auth';
 import { postScore } from '../../api/score';
+import { KeyWrapper, OuterWrapper } from './AsteroidsContainer.styled';
+import {
+  GameKeyDescription,
+  KeyboardImg,
+  KeyboardWrapper,
+  MinorDescription,
+  MouseImg,
+  MouseWrapper,
+} from './AsteroidsContainer.styled';
 
 export default function AsteroidsContainer() {
   useEffect(() => {
@@ -33,14 +42,31 @@ export default function AsteroidsContainer() {
       Asteroid.render();
     }
 
-    function startGame() {
+    function setGame() {
+      SPACE_SHIP.initialize();
       SPACE_SHIP.setMainCanvas();
       SCORE_MANAGER.setScoreManager();
+      Asteroid.asteroids.length = 0;
+      Missile.missiles.length = 0;
+      ASTEROID_SPAWN_MANAGER.spawnCoolTime = 0;
+    }
+
+    function startGame() {
+      setGame();
       return setInterval(gameScreenUpdate, 10);
     }
 
     function checkSpaceShipDestroyed() {
       if (SPACE_SHIP.isSpaceShipDestroyed) {
+        endGame();
+      }
+    }
+
+    function checkURLSwitched() {
+      const url = window.location.href;
+      const page = url.slice(-10, url.length);
+
+      if (page !== '/asteroids') {
         endGame();
       }
     }
@@ -82,28 +108,47 @@ export default function AsteroidsContainer() {
 
     function endGame() {
       clearInterval(game);
-      clearInterval(endGameChecker);
+      clearInterval(spaceShipDestroyedChecker);
+      clearInterval(urlSwitchedChecker);
+
       if (SPACE_SHIP.isSpaceShipDestroyed) {
         const gameType = 3;
         const score = showGameResult();
         const auth = getAuth();
         const userName = auth.currentUser?.displayName;
         const userEmail = auth.currentUser?.email;
-
-        postScore(gameType, score, userName, userEmail);
+        if (userName) {
+          postScore(gameType, score, userName, userEmail);
+        }
       }
     }
 
     const game = startGame();
-    const endGameChecker = setInterval(checkSpaceShipDestroyed, 10);
+    const spaceShipDestroyedChecker = setInterval(checkSpaceShipDestroyed, 10);
+    const urlSwitchedChecker = setInterval(checkURLSwitched, 10);
   }, []);
 
   return (
-    <>
+    <OuterWrapper>
+      <KeyWrapper>
+        <MinorDescription>
+          {'❗️ 파편화된 소행성을 먹어 점수를 획득해보세요.'}
+        </MinorDescription>
+        <MouseWrapper>
+          <MouseImg />
+          <GameKeyDescription>
+            {'우주선 이동: 검은 캔버스 마우스 좌클릭'}
+          </GameKeyDescription>
+        </MouseWrapper>
+        <KeyboardWrapper>
+          <KeyboardImg />
+          <GameKeyDescription>{'미사일 공격: a 키'}</GameKeyDescription>
+        </KeyboardWrapper>
+      </KeyWrapper>
       <canvas id='background-canvas' width='500' height='500'></canvas>
       <canvas id='asteroid-canvas' width='500' height='500'></canvas>
       <canvas id='missile-canvas' width='500' height='500'></canvas>
       <canvas id='main-canvas' width='500' height='500'></canvas>
-    </>
+    </OuterWrapper>
   );
 }
