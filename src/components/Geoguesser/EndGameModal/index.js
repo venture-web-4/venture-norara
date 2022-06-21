@@ -24,7 +24,7 @@ export default function EndGameModal({ userName, onClick, score }) {
     <Wrapper>
       <ModalTitleWrapper>
         <ModalImageWin />
-        <ModalAnnounce>와! 뚱이를 구출했습니다!🎉</ModalAnnounce>
+        <ModalAnnounce>서울대 탐방 완료!</ModalAnnounce>
         <ModalAnswer>점수 (평균오차) : {score.toFixed(2)}</ModalAnswer>
       </ModalTitleWrapper>
       <ButtonWrapper>
