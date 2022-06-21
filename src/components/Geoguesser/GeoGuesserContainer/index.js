@@ -46,13 +46,13 @@ export default function GeoGuesserContainer() {
         // KakaoMapScript();
       }
     }
-    if (stage >= 14.5) {
+    if (stage >= 12.5) {
       setShowEndGameModal(true);
     }
   }, [stage]);
 
   const handleClickPostScore = async scoreSum => {
-    await postScore(3, scoreSum / 14, userName, userEmail);
+    await postScore(3, scoreSum / 12, userName, userEmail);
   };
 
   useEffect(() => {
@@ -70,7 +70,11 @@ export default function GeoGuesserContainer() {
       <FlexBoxWrapper>
         <FlexItemWrapper>
           <ColContainer>
-            <Title>사진 위치 맞추기</Title>
+            {stage === 0.5 ? (
+              <Title>사진 위치 맞추기</Title>
+            ) : (
+              <Title>사진 위치 맞추기 ({parseInt(stage)}/12)</Title>
+            )}
             {(stage * 2) % 2 === 0 || stage === 0.5 ? (
               <SubTitle>사진을 보고 위치를 맞혀보세요</SubTitle>
             ) : (
@@ -82,7 +86,7 @@ export default function GeoGuesserContainer() {
               <EndGameModal
                 userName={userName}
                 onClick={() => handleClickPostScore(scoreSum)}
-                score={scoreSum / 14}
+                score={scoreSum / 12}
               />
             )}
 

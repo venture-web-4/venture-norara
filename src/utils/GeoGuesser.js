@@ -15,17 +15,15 @@ export function KakaoMapScript(reset = false) {
     new kakao.maps.LatLng(37.465994299722226, 126.9518158), //snu_1.jpg
     new kakao.maps.LatLng(37.46042489972223, 126.95679189972222), //snu_2.jpg
     new kakao.maps.LatLng(37.4655776, 126.9509797), //snu_3.jpg
-    new kakao.maps.LatLng(37.461989, 126.9592526), //snu_4.jpg
-    new kakao.maps.LatLng(37.44969849972222, 126.95250579972223), //snu_5.jpg
-    new kakao.maps.LatLng(37.46616625058365, 126.954473689774), //snu_6.jpg
-    new kakao.maps.LatLng(37.4611518, 126.952149), //snu_7.jpg
-    new kakao.maps.LatLng(37.458943599722225, 126.9502935), //snu_8.jpg
-    new kakao.maps.LatLng(37.467597599722225, 126.9517802), //snu_9.jpg
-    new kakao.maps.LatLng(37.4626164, 126.9579633), //snu_10.jpg
-    new kakao.maps.LatLng(37.462783899722226, 126.95031409972222), //snu_11.jpg
-    new kakao.maps.LatLng(37.459227599722226, 126.95132279972222), //snu_12.jpg
-    new kakao.maps.LatLng(37.453320599722225, 126.95338089972222), //snu_13.jpg
-    new kakao.maps.LatLng(37.460039972222226, 126.951564), //snu_14.jpg
+    new kakao.maps.LatLng(37.44969849972222, 126.95250579972223), //snu_4.jpg
+    new kakao.maps.LatLng(37.46616625058365, 126.954473689774), //snu_5.jpg
+    new kakao.maps.LatLng(37.4611518, 126.952149), //snu_6.jpg
+    new kakao.maps.LatLng(37.467597599722225, 126.9517802), //snu_7.jpg
+    new kakao.maps.LatLng(37.4626164, 126.9579633), //snu_8.jpg
+    new kakao.maps.LatLng(37.462783899722226, 126.95031409972222), //snu_9.jpg
+    new kakao.maps.LatLng(37.459227599722226, 126.95132279972222), //snu_10.jpg
+    new kakao.maps.LatLng(37.453320599722225, 126.95338089972222), //snu_11.jpg
+    new kakao.maps.LatLng(37.460039972222226, 126.951564), //snu_12.jpg
   ];
 
   // draw rectangle on the center of the map
