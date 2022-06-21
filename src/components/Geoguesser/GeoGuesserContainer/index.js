@@ -53,6 +53,7 @@ export default function GeoGuesserContainer() {
 
   const handleClickPostScore = async scoreSum => {
     await postScore(1, scoreSum / 12, userName, userEmail);
+    window.location.href = '/geoguesser';
   };
 
   useEffect(() => {
