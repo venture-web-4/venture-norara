@@ -19,23 +19,24 @@ import {
 
 import { getScores } from '../../api/score';
 import { getDefaultNormalizer } from '@testing-library/react';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function LandingHeader() {
   // MOCK DATA: 게임별 score 필터링해서 랭크 보여주기
   // nestedArray = [[username1, score1], [username2, score2],  ... ];
 
   const getRanking = async () => {
-    let rankerList = []
-    const response = await getScores(0)
-    response.forEach(item => {rankerList.push([item['username'], item['score']])})
-    return rankerList
-  }
+    let rankerList = [];
+    const response = await getScores(0);
+    response.forEach(item => {
+      rankerList.push([item['username'], item['score']]);
+    });
+    return rankerList;
+  };
 
-  useEffect(()=>{
-    console.log("promise에러")
-  })
-
+  useEffect(() => {
+    console.log('promise에러');
+  });
 
   const rankersOnUFOGame = [
     ['4조', 600],
