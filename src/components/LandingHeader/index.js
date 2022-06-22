@@ -27,8 +27,14 @@ export default function LandingHeader() {
   useEffect(() => {
     (async () => {
       setRankersOnUFOGame(await handleGetScoresArr(0));
+    })();
+    (async () => {
       setRankersOnGeoguesser(await handleGetScoresArr(1));
+    })();
+    (async () => {
       setRankersOnCatGame(await handleGetScoresArr(2));
+    })();
+    (async () => {
       setRankersOnAsteroids(await handleGetScoresArr(3));
     })();
   }, []);
