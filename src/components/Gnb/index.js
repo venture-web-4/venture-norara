@@ -80,6 +80,24 @@ export default function Gnb() {
     return () => clearInterval(interval);
   }, []);
 
+  const sendPostApi = async word => {
+    try {
+      const res = await axios.get(
+        `/v1/search/encyc.json?query=${word}&display=10`,
+        {
+          headers: {
+            'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT,
+            'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      return res.data.items;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Wrapper>
       <NavigatorWrapper>
