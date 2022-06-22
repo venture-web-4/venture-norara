@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from 'react';
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
-import {getScores} from '../../api/score'
+import { getScores } from '../../api/score';
 
 import {
   Announce,

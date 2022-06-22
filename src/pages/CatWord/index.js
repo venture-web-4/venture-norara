@@ -77,37 +77,37 @@ export default function CatWord() {
   // }, 1200);
   // Interval
 
-    // // 테스트용 axios 요청
-    // (async () => {
-    //   const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
-    //   const word = '야옹';
-    //   const res = await axios(
-    //     {
-    //       url: `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
-    //       headers: { 'Content-Type': 'application/json' },
-    //       method: 'GET'
-    //     },
-    //   );
-    //   console.log(res);
-    // })();
+  // // 테스트용 axios 요청
+  // (async () => {
+  //   const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
+  //   const word = '야옹';
+  //   const res = await axios(
+  //     {
+  //       url: `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
+  //       headers: { 'Content-Type': 'application/json' },
+  //       method: 'GET'
+  //     },
+  //   );
+  //   console.log(res);
+  // })();
 
-    // (async () => {
-    //   try {
-    //     const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
-    //     const word = '야옹';
-    //     const res = await fetch(
-    //       `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
-    //       {
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //         },
-    //       }
-    //     );
-    //     console.log(await res.json());
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // })();
+  // (async () => {
+  //   try {
+  //     const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
+  //     const word = '야옹';
+  //     const res = await fetch(
+  //       `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     );
+  //     console.log(await res.json());
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // })();
 
   const handlePostScore = async point => {
     await postScore(2, point, userName, userEmail);
