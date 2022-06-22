@@ -20,6 +20,7 @@ import {
 
 import { getScores } from '../../api/score';
 import { getDefaultNormalizer } from '@testing-library/react';
+import { useEffect, useState } from 'react';
 
 export default function LandingHeader() {
   const [rankersOnUFOGame, setRankersOnUFOGame] = useState();
@@ -27,23 +28,19 @@ export default function LandingHeader() {
   const [rankersOnCatGame, setRankersOnCatGame] = useState();
   const [rankersOnAsteroids, setRankersOnAsteroids] = useState();
 
+  const getRanking = async () => {
+    let rankerList = [];
+    const response = await getScores(0);
+    response.forEach(item => {
+      rankerList.push([item['username'], item['score']]);
+    });
+    return rankerList;
+  };
+
   useEffect(() => {
-    (async () => {
-      setRankersOnUFOGame(await handleGetScoresArr(0));
-      setRankersOnGeoguesser(await handleGetScoresArr(1));
-      setRankersOnCatGame(await handleGetScoresArr(2));
-      setRankersOnAsteroids(await handleGetScoresArr(3));
-    })();
-  }, []);
+    console.log('promise에러');
+  });
 
-  const handleGetScoresArr = useCallback(async gameNum => {
-    const resultArr = [];
-    const rankingArr = await getScores(gameNum);
-    rankingArr.forEach(el => resultArr.push([el?.username, el?.score]));
-    const targetArr = resultArr.sort((a, b) => b[1] - a[1]);
-
-    return targetArr;
-  }, []);
 
   return (
     <Wrapper>

@@ -74,8 +74,7 @@ export default function CatWord() {
 
   useEffect(() => {
     if (status['time'] === 0) {
-      alert(`Game Over 고양이의 승리다냥!
-      `);
+      alert(`Game Over 고양이의 승리다냥!`);
       location.reload();
     }
 
