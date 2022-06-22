@@ -37,7 +37,7 @@ import { check } from 'prettier';
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '고양이', color: 'red' }]);
   const [point, setPoint] = useState(0);
-  const [status, setStatus] = useState({ time: 6, color: 'black' });
+  const [status, setStatus] = useState({ time: 10, color: 'black' });
   const [sound, setSound] = useState(false);
 
   const checkWord = word => {
@@ -70,11 +70,11 @@ export default function CatWord() {
     }
   };
 
-  useInterval(() => {
-    const value = status['time'];
-    setStatus({ ...status, time: value - 1 });
-    setSound(false);
-  }, 1200);
+  // useInterval(() => {
+  //   const value = status['time'];
+  //   setStatus({ ...status, time: value - 1 });
+  //   setSound(false);
+  // }, 1200);
   // Interval
 
     // // 테스트용 axios 요청

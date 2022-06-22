@@ -70,7 +70,7 @@ export default function LandingHeader() {
         <RankingEachGameWrapper>
           <Ranking title={'UFO GAME'} data={rankersOnUFOGame} />
           <Ranking title={'위치를 찾아라!'} data={rankersOnGeoguesser} />
-          <Ranking title={'냥이와 아무말 끝말잇기'} data={rankersOnCatGame} />
+          <Ranking title={'아무말 끝말잇기'} data={rankersOnCatGame} />
           <Ranking title={'소행성을 부숴라!'} data={rankersOnAsteroids} />
         </RankingEachGameWrapper>
       </RankingWrapper>
