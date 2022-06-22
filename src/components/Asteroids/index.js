@@ -35,11 +35,15 @@ export default function AsteroidsContainer() {
 
   useEffect(() => {
     function gameScreenUpdate() {
-      ASTEROID_SPAWN_MANAGER.spawner();
-      SCORE_MANAGER.runTimer();
-      SPACE_SHIP.activate();
-      Missile.render();
-      Asteroid.render();
+      try {
+        ASTEROID_SPAWN_MANAGER.spawner();
+        SCORE_MANAGER.runTimer();
+        SPACE_SHIP.activate();
+        Missile.render();
+        Asteroid.render();
+      } catch (e) {
+        return;
+      }
     }
 
     function setGame() {
@@ -118,7 +122,7 @@ export default function AsteroidsContainer() {
         const userName = auth.currentUser?.displayName;
         const userEmail = auth.currentUser?.email;
         if (userName) {
-          postScore(gameType, score, userName, userEmail);
+          const postResult = postScore(gameType, score, userName, userEmail);
         }
       }
     }
