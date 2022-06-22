@@ -4,54 +4,58 @@ import axios from 'axios';
 const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
 
 const getUrl = word => {
-  return `/api/search?key=${apiKey}&q=${word}&req_type=json`;
+  // const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
+  // return `/api/search?key=${apiKey}&q=${word}&req_type=json`;
+
+  const display = 2;
+  return `/v1/search/encyc.json?query=${word}&display=${display}`;
 };
 
 const sendGetRequest = async word => {
   const response = await axios({
     url: getUrl(word),
     method: 'GET',
-    data: '',
-    headers: {},
-  });
-  console.log(response);
+    headers: { 'Content-Type': 'application/json' },
+  }).then(res => console.log(res));
 };
 
-const sendPostRequest = async word => {
-  console.log('hi');
-};
-
-export const wordCheck = word => {
-  if (sendGetRequest(word)) return true;
-};
-
-const chooseResponse = json => {
-  return true;
-};
-
-const wordResponse = async word => {
-  const jsonResponse = await sendPostRequest(word[word.length - 1]);
-  const response = chooseResponse(jsonResponse);
-  //단어를 랜덤으로 api json dataset에서 고르는 로직
-  //그리고 그 단어를 return하는 로직
-  return response;
-};
-
-export const catAnswer = ({ word, setWordList, point, setSound }) => {
-  if (point === 20) {
-    alert('왜 이렇게 잘하냐옹! 이제 더 이상 봐주지 않겠냐옹!');
-    setTimeout(() => {
-      setWordList(prev =>
-        prev.concat({ text: '이건못하겠지냥', color: 'red' })
+const sendPostApi = async (word) => {
+    try {
+      const res = await axios.get(
+        `/v1/search/encyc.json?query=${word}&display=1`,
+        {
+          headers: {
+            'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT,
+            'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
+            'Content-Type': 'application/json',
+          },
+        }
       );
-    }, 300);
+      return res.data.items
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+export const catAnswer = async ({ word, setWordList, point, setSound, gameOver }) => {
+  const rawApiAnswer = await sendPostApi(word.charAt(word.length-1))
+  const apiAnswer = rawApiAnswer[0]['description'].split(' ')[1]
+  console.log(rawApiAnswer[0])
+  if (apiAnswer != '') {
+  if (point === 20) {
+    alert('왜 이렇게 잘하냐옹! 져라 인간!!');
+    gameOver()
   } else {
     setTimeout(() => {
       setWordList(prev =>
-        prev.concat({ text: wordResponse(word), color: 'red' })
+        prev.concat({ text: apiAnswer, color: 'red' })
       );
       setSound(true);
     }, 300);
+  }} else {
+    alert('game over')
+    gameOver()
+    // props로 Postscore 적용했는데 확인 부탁드립니다 죄송합니다
   }
 };
 

@@ -1,6 +1,7 @@
-import { useCallback } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
+import {getScores} from '../../api/score'
 
 import {
   Announce,
@@ -18,28 +19,29 @@ import {
   RankingImg,
 } from './LandingHeader.styled';
 
-import { getScores } from '../../api/score';
-import { getDefaultNormalizer } from '@testing-library/react';
-import { useEffect, useState } from 'react';
-
 export default function LandingHeader() {
   const [rankersOnUFOGame, setRankersOnUFOGame] = useState();
   const [rankersOnGeoguesser, setRankersOnGeoguesser] = useState();
   const [rankersOnCatGame, setRankersOnCatGame] = useState();
   const [rankersOnAsteroids, setRankersOnAsteroids] = useState();
 
-  const getRanking = async () => {
-    let rankerList = [];
-    const response = await getScores(0);
-    response.forEach(item => {
-      rankerList.push([item['username'], item['score']]);
-    });
-    return rankerList;
-  };
-
   useEffect(() => {
-    console.log('promise에러');
-  });
+    (async () => {
+      setRankersOnUFOGame(await handleGetScoresArr(0));
+      setRankersOnGeoguesser(await handleGetScoresArr(1));
+      setRankersOnCatGame(await handleGetScoresArr(2));
+      setRankersOnAsteroids(await handleGetScoresArr(3));
+    })();
+  }, []);
+
+  const handleGetScoresArr = useCallback(async gameNum => {
+    const resultArr = [];
+    const rankingArr = await getScores(gameNum);
+    rankingArr.forEach(el => resultArr.push([el?.username, el?.score]));
+    const targetArr = resultArr.sort((a, b) => b[1] - a[1]);
+
+    return targetArr;
+  }, []);
 
   return (
     <Wrapper>
@@ -68,7 +70,7 @@ export default function LandingHeader() {
         <RankingEachGameWrapper>
           <Ranking title={'UFO GAME'} data={rankersOnUFOGame} />
           <Ranking title={'위치를 찾아라!'} data={rankersOnGeoguesser} />
-          <Ranking title={'냥이와 끝말잇기'} data={rankersOnCatGame} />
+          <Ranking title={'냥이와 아무말 끝말잇기'} data={rankersOnCatGame} />
           <Ranking title={'소행성을 부숴라!'} data={rankersOnAsteroids} />
         </RankingEachGameWrapper>
       </RankingWrapper>

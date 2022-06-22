@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../../components/Footer';
+import Gnb from '../../components/Gnb';
 import useInterval from '../../hooks/useInterval';
 import ReactHowler from 'react-howler';
 import axios from 'axios';
@@ -27,6 +29,8 @@ import {
   StyledStatusBar,
   StyledBarWrapper,
   StyledGameWrapperPart,
+  Wrapper,
+  Title,
 } from './CatWord.Styled';
 import { check } from 'prettier';
 
@@ -35,7 +39,6 @@ export default function CatWord() {
   const [point, setPoint] = useState(0);
   const [status, setStatus] = useState({ time: 6, color: 'black' });
   const [sound, setSound] = useState(false);
-  const [isGameOver, setIsGameOver] = useState(false);
 
   const checkWord = word => {
     // api를 이용한 로직도 추가해야 함
@@ -59,7 +62,7 @@ export default function CatWord() {
       ) {
         setWordList(wordList.concat({ text: word, color: 'green' }));
         setPoint(prev => prev + 1);
-        catAnswerNoApi({ word, setWordList, point, setSound });
+        catAnswer({ word, setWordList, point, setSound, handlePostScore });
         setStatus({ time: 6, color: 'black' });
       } else {
         alert('그건 틀렸다냥!');
@@ -67,14 +70,44 @@ export default function CatWord() {
     }
   };
 
-  // useInterval(() => {
-  //   const value = status['time'];
-  //   setStatus({ ...status, time: value - 1 });
-  //   setSound(false);
-  // }, 1200);
+  useInterval(() => {
+    const value = status['time'];
+    setStatus({ ...status, time: value - 1 });
+    setSound(false);
+  }, 1200);
+  // Interval
 
-  const userName = loadItem('userName');
-  const userEmail = loadItem('userEmail');
+    // // 테스트용 axios 요청
+    // (async () => {
+    //   const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
+    //   const word = '야옹';
+    //   const res = await axios(
+    //     {
+    //       url: `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
+    //       headers: { 'Content-Type': 'application/json' },
+    //       method: 'GET'
+    //     },
+    //   );
+    //   console.log(res);
+    // })();
+
+    // (async () => {
+    //   try {
+    //     const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
+    //     const word = '야옹';
+    //     const res = await fetch(
+    //       `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
+    //       {
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //         },
+    //       }
+    //     );
+    //     console.log(await res.json());
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // })();
 
   const handlePostScore = async point => {
     await postScore(2, point, userName, userEmail);
@@ -95,9 +128,12 @@ export default function CatWord() {
   }, [status['time']]);
 
   return (
-    <div>
+    <Wrapper>
+      <Gnb />
+
       <ReactHowler src={catMeow} playing={sound} />
       <StyledWrapper>
+        <Title>냥이와 아무말 끝말잇기</Title>
         <StyledGameWrapper>
           <StyledGameWrapperPart>
             <StyledCat src={Cat} />
@@ -115,7 +151,9 @@ export default function CatWord() {
           </StyledGameWrapperPart>
         </StyledGameWrapper>
       </StyledWrapper>
-    </div>
+
+      <Footer />
+    </Wrapper>
   );
 }
 
@@ -131,4 +169,5 @@ export default function CatWord() {
 
 // 최초 제시어 관련
 
-// 시간이 더 촉박할 경우 더 킹받도록 더 떨게 하고 제한시간도 흔들리게 하기
+// 시간이 더 촉박할 경우 더 킹받도록 더 떨게 하고 제한시간도 흔들리게 하
+//
