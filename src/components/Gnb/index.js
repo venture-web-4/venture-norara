@@ -37,10 +37,8 @@ export default function Gnb() {
     let username = document.getElementById('username').value;
     if (username) {
       changeDisplayName(username);
-      auth = getAuth();
-      setUserName(auth.currentUser.displayName);
-      saveItem('userName', auth.currentUser.displayName);
-      saveItem('userEmail', auth.currentUser.email);
+      setUserName(username);
+      saveItem('userName', username);
     }
     setShowModal(false);
   };
