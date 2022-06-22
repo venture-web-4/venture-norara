@@ -9,14 +9,3 @@ module.exports = function (app) {
     })
   );
 };
-
-// opendict 관련 api
-// module.exports = function (app) {
-//   app.use(
-//     '/api',
-//     createProxyMiddleware({
-//       target: 'https://opendict.korean.go.kr',
-//       changeOrigin: true,
-//     })
-//   );
-// };

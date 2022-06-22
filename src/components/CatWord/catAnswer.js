@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
-
 const getUrl = word => {
-  // const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
-  // return `/api/search?key=${apiKey}&q=${word}&req_type=json`;
-
   const display = 2;
   return `/v1/search/encyc.json?query=${word}&display=${display}`;
 };
@@ -44,9 +39,10 @@ export const catAnswer = async ({
   setSound,
   gameOver,
 }) => {
-  const rawApiAnswer = await sendPostApi(word.charAt(word.length - 1));
-  const apiAnswer = rawApiAnswer[0]['description'].split(' ')[1];
-  console.log(rawApiAnswer[0]);
+  // const rawApiAnswer = await sendPostApi(word.charAt(word.length - 1));
+  // const apiAnswer = rawApiAnswer[0]['description'].split(' ')[1];
+  // console.log(rawApiAnswer[0]);
+  const apiAnswer = noApi(word);
   if (apiAnswer != '') {
     if (point === 20) {
       alert('왜 이렇게 잘하냐옹! 져라 인간!!');
@@ -66,11 +62,11 @@ export const catAnswer = async ({
 
 const randomAnswer = () => {
   const koreanComponent =
-    '가갸거겨고교구규그기긔개걔게계과괴괘궈귀궤나냐너녀노뇨누뉴느니늬내냬네녜놔뇌놰눠뉘눼다댜더뎌도됴두듀드디듸대댸데뎨돠되돼둬뒤뒈라랴러려로료루류르리릐래럐레례롸뢰뢔뤄뤼뤠마먀머며모묘무뮤므미믜매먜메몌뫄뫼뫠뭐뮈뭬바뱌버벼보뵤부뷰브비븨배뱨베볘봐뵈봬붜뷔붸사샤서셔소쇼수슈스시싀새섀세셰솨쇠쇄숴쉬쉐아야어여오요우유으이의애얘에예와외왜워위웨자쟈저져조죠주쥬즈지즤재쟤제졔좌죄좨줘쥐줴차챠처쳐초쵸추츄츠치츼채챼체쳬톼최쵀춰취췌카캬커켜코쿄쿠큐크키킈캐컈케켸톼쾨쾌쿼퀴퀘타탸터텨토툐투튜트티틔태턔테톄톼퇴퇘퉈튀퉤파퍄퍼펴포표푸퓨프피픠패퍠페폐퐈푀퐤풔퓌풰하햐허혀호효후휴흐히희해햬헤혜화회홰훠휘훼까꺄꺼껴꼬꾜꾸뀨끄끼끠깨꺠께꼐꽈꾀꽤꿔뀌꿰따땨떠뗘또뚀뚜뜌뜨띠띄때떄떼뗴똬뙤뙈뚸뛰뛔싸쌰써쎠쏘쑈쑤쓔쓰씨씌쌔썌쎄쎼쏴쐬쐐쒀쒸쒜짜쨔쩌쪄쪼쬬쭈쮸쯔찌쯰째쨰쩨쪠쫘쬐쫴쭤쮜쮀빠뺘뻐뼈뽀뾰뿌쀼쁘삐쁴빼뺴뻬뼤뽜뾔뽸뿨쀠쀄';
+    '가갸거겨고교구규그기긔개게나냐너녀노뇨누뉴느니늬내네다댜더뎌도드디듸대댸데돠되돼둬뒤뒈라랴러려로료루류르리릐래레롸뢰뢔뤄뤼뤠마먀머며모묘무뮤므미믜매메뫄뫼뫠뭐뮈뭬바뱌버벼보뵤부뷰브비븨배봐뵈봬사샤서셔소쇼수슈싀새섀세셰솨쇠쇄쉐야어여오요우유으이의애에예와외왜워위웨조주재제좌죄좨줘쥐줴차챠처쳐초쵸추츄츠치츼채챼체쳬톼최춰취췌카캬커켜코쿄쿠큐크키킈캐톼쾨쿼퀴타탸터텨토툐투튜트티틔태턔테톄톼퇴퇘퉈튀퉤파퍄퍼펴포표푸퓨프피픠패퐈푀퐤풔퓌풰하햐허혀호효후휴흐히희해햬헤혜화회홰훠휘훼까꺄꺼껴꼬꾸뀨끄끼끠께꽈꾀꽤꿔뀌꿰따땨떠뗘또뚀뚜뜌뜨띠띄때똬뙤뙈뚸뛰뛔싸쌰써쎠쏘쑈쑤쓔쓰씨씌쌔쎄쏴쐬쐐쒀쒸쒜짜쨔쪼쬬쭈쮸쯔찌쯰째쩨쪠쫘쬐쭤쮜쮀';
   const randomChar = koreanComponent.charAt(
     Math.floor(Math.random() * koreanComponent.length)
   );
-  const answer = `냥나옹${randomChar}`;
+  return `야옹${randomChar}`;
 };
 
 const noApi = word => {
@@ -92,6 +88,3 @@ export const catAnswerNoApi = ({ word, setWordList, point, setSound }) => {
     }, 300);
   }
 };
-
-//랜덤으로 글자 생성
-//점수 로직 추가

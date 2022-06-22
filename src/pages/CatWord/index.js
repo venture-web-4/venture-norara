@@ -37,13 +37,12 @@ import { check } from 'prettier';
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '고양이', color: 'red' }]);
   const [point, setPoint] = useState(0);
-  const [status, setStatus] = useState({ time: 10, color: 'black' });
+  const [status, setStatus] = useState({ time: 6, color: 'black' });
   const [sound, setSound] = useState(false);
 
   const checkWord = word => {
     // api를 이용한 로직도 추가해야 함
     // useEffect를 통해 받아 온 제시어를 여기서 가져와서 제시어의 마지막 글자와 같은 지 확인한다.
-
     if (wordList.find(item => item['text'] === word)) {
       alert('그건 이미 말한 단어이다냥! 인간의 꼼수!');
       return;
@@ -51,7 +50,7 @@ export default function CatWord() {
 
     console.log(wordList[wordList.length - 1]['text'].slice(-1));
 
-    if (point === 20) {
+    if (point === 12) {
       alert('인간, 끝말잇기 너무 잘한다냥! 같이 놀기 싫다냥!');
       catAnswer({ word, setWordList, point, setSound });
     } else {
@@ -70,48 +69,16 @@ export default function CatWord() {
     }
   };
 
-  // useInterval(() => {
-  //   const value = status['time'];
-  //   setStatus({ ...status, time: value - 1 });
-  //   setSound(false);
-  // }, 1200);
+  useInterval(() => {
+    const value = status['time'];
+    setStatus({ ...status, time: value - 1 });
+    setSound(false);
+  }, 1200);
   // Interval
-
-  // // 테스트용 axios 요청
-  // (async () => {
-  //   const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
-  //   const word = '야옹';
-  //   const res = await axios(
-  //     {
-  //       url: `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
-  //       headers: { 'Content-Type': 'application/json' },
-  //       method: 'GET'
-  //     },
-  //   );
-  //   console.log(res);
-  // })();
-
-  // (async () => {
-  //   try {
-  //     const API_KEY = process.env.REACT_APP_OPENDICT_API_KEY;
-  //     const word = '야옹';
-  //     const res = await fetch(
-  //       `/api/search?key=${API_KEY}&q=${word}&req_type=json`,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       }
-  //     );
-  //     console.log(await res.json());
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // })();
 
   const handlePostScore = async point => {
     await postScore(2, point, userName, userEmail);
-    window.location.href = '/catword';
+    window.location.href = '/catWord';
   };
 
   useEffect(() => {
@@ -133,7 +100,7 @@ export default function CatWord() {
 
       <ReactHowler src={catMeow} playing={sound} />
       <StyledWrapper>
-        <Title>냥이와 아무말 끝말잇기</Title>
+        <Title>냥이와 야옹어 끝말잇기</Title>
         <StyledGameWrapper>
           <StyledGameWrapperPart>
             <StyledCat src={Cat} />
