@@ -24,7 +24,7 @@ import { executeLogin, executeLogout, changeDisplayName } from '../../api/auth';
 import { clearItem, saveItem } from '../../utils/storage';
 
 export default function Gnb() {
-  const auth = getAuth();
+  let auth = getAuth();
   const [userName, setUserName] = useState(auth.currentUser?.displayName);
   const [isLoggedIn, setIsLoggedIn] = useState(!!auth.currentUser);
   const [showModal, setShowModal] = useState(false);
@@ -37,6 +37,7 @@ export default function Gnb() {
     let username = document.getElementById('username').value;
     if (username) {
       changeDisplayName(username);
+      auth = getAuth();
       setUserName(auth.currentUser.displayName);
       saveItem('userName', auth.currentUser.displayName);
       saveItem('userEmail', auth.currentUser.email);

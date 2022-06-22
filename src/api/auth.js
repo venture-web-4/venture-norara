@@ -11,11 +11,11 @@ export async function executeLogin() {
   const provider = new GoogleAuthProvider();
   try {
     let res = await signInWithPopup(auth, provider);
-    console.log(res); // @debug
+    //console.log(res); // @debug
     let displayName = res.user.displayName; // @debug
     return displayName;
   } catch (err) {
-    console.log(err); // @debug
+    //console.log(err); // @debug
     return false;
   }
 }
@@ -37,7 +37,7 @@ export const changeDisplayName = displayName => {
     displayName: displayName,
   })
     .then(() => {
-      console.log('profile updated'); // @debug
+      // console.log('profile updated'); // @debug
     })
     .catch(error => {});
 };
