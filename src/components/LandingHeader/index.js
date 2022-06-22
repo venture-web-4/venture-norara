@@ -44,9 +44,8 @@ export default function LandingHeader() {
     const resultArr = [];
     const rankingArr = await getScores(gameNum, order);
     rankingArr.forEach(el => resultArr.push([el?.username, el?.score]));
-    const targetArr = resultArr.sort((a, b) => b[1] - a[1]);
-
-    return targetArr;
+    //const targetArr = resultArr.sort((a, b) => b[1] - a[1]);`
+    return resultArr;
   }, []);
 
   return (

@@ -2,7 +2,7 @@ import { loadDb } from './firebase';
 
 // type : 0~3
 // order : null or "desc"
-async function getScores(gametype = null, order = 'desc') {
+async function getScores(gametype = null, order) {
   let db = loadDb();
   let scores = [];
   if (gametype == null) {

@@ -27,7 +27,7 @@ export default function Ranking({ title, data }) {
             return (
               <Rankers key={index}>
                 {`${index + 1}등 ${elem[0]}`}
-                <Score>{`- ${elem[1]}점 `}</Score>
+                <Score>{`- ${elem[1].toFixed(2)}점 `}</Score>
               </Rankers>
             );
           })
