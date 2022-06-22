@@ -27,22 +27,22 @@ export default function LandingHeader() {
 
   useEffect(() => {
     (async () => {
-      setRankersOnUFOGame(await handleGetScoresArr(0));
+      setRankersOnUFOGame(await handleGetScoresArr(0, 'desc'));
     })();
     (async () => {
-      setRankersOnGeoguesser(await handleGetScoresArr(1));
+      setRankersOnGeoguesser(await handleGetScoresArr(1, 'asc'));
     })();
     (async () => {
-      setRankersOnCatGame(await handleGetScoresArr(2));
+      setRankersOnCatGame(await handleGetScoresArr(2, 'desc'));
     })();
     (async () => {
-      setRankersOnAsteroids(await handleGetScoresArr(3));
+      setRankersOnAsteroids(await handleGetScoresArr(3, 'desc'));
     })();
   }, []);
 
-  const handleGetScoresArr = useCallback(async gameNum => {
+  const handleGetScoresArr = useCallback(async (gameNum, order) => {
     const resultArr = [];
-    const rankingArr = await getScores(gameNum);
+    const rankingArr = await getScores(gameNum, order);
     rankingArr.forEach(el => resultArr.push([el?.username, el?.score]));
     const targetArr = resultArr.sort((a, b) => b[1] - a[1]);
 

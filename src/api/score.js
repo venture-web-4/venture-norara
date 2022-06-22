@@ -2,7 +2,7 @@ import { loadDb } from './firebase';
 
 // type : 0~3
 // order : null or "desc"
-async function getScores(gametype = null) {
+async function getScores(gametype = null, order = 'desc') {
   let db = loadDb();
   let scores = [];
   if (gametype == null) {
@@ -11,17 +11,28 @@ async function getScores(gametype = null) {
       scores.push(doc.data());
     });
   } else {
-    let querySnapshot = await db
-      .collection('scores')
-      .where('gametype', '==', gametype)
-      .orderBy('score', 'desc')
-      .limit(10)
-      .get();
-    querySnapshot.forEach(doc => {
-      scores.push(doc.data());
-    });
+    if (order == 'desc') {
+      let querySnapshot = await db
+        .collection('scores')
+        .where('gametype', '==', gametype)
+        .orderBy('score', 'desc')
+        .limit(10)
+        .get();
+      querySnapshot.forEach(doc => {
+        scores.push(doc.data());
+      });
+    } else {
+      let querySnapshot = await db
+        .collection('scores')
+        .where('gametype', '==', gametype)
+        .orderBy('score', 'asc')
+        .limit(10)
+        .get();
+      querySnapshot.forEach(doc => {
+        scores.push(doc.data());
+      });
+    }
   }
-
   return scores;
 }
 
