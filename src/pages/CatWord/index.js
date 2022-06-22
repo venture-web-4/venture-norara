@@ -9,7 +9,11 @@ import {
   Component3,
   Component4,
 } from '../../components/CatWord/Component';
-import { catAnswer, catAnswerNoApi, checkWord } from '../../components/CatWord/catAnswer';
+import {
+  catAnswer,
+  catAnswerNoApi,
+  checkWord,
+} from '../../components/CatWord/catAnswer';
 
 //Static Source
 import Cat from '../../img/cat.png';
@@ -49,7 +53,7 @@ export default function CatWord() {
     } else {
       if (
         word.length > 1 &&
-        wordList[wordList.length - 1]['text'].slice(-1) === word[0] 
+        wordList[wordList.length - 1]['text'].slice(-1) === word[0]
         // && checkWord(word) (api를 통해 체크하는 조건)
       ) {
         setWordList(wordList.concat({ text: word, color: 'green' }));
