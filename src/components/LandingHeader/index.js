@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
 
@@ -40,7 +40,6 @@ export default function LandingHeader() {
   useEffect(() => {
     console.log('promise에러');
   });
-
 
   return (
     <Wrapper>

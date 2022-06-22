@@ -35,6 +35,7 @@ export default function CatWord() {
   const [point, setPoint] = useState(0);
   const [status, setStatus] = useState({ time: 6, color: 'black' });
   const [sound, setSound] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false)
 
   const checkWord = word => {
     // api를 이용한 로직도 추가해야 함
@@ -72,9 +73,19 @@ export default function CatWord() {
   //   setSound(false);
   // }, 1200);
 
+
+  const userName = loadItem('userName');
+  const userEmail = loadItem('userEmail');
+
+  const handlePostScore = async(point) => {
+    await postScore(2, point, userName, userEmail);
+    window.location.href = '/catword';
+  };
+
   useEffect(() => {
     if (status['time'] === 0) {
       alert(`Game Over 고양이의 승리다냥!`);
+      handlePostScore(point)
       location.reload();
     }
 
@@ -83,6 +94,7 @@ export default function CatWord() {
       setStatus({ ...status, color: 'red' });
     }
   }, [status['time']]);
+
 
   return (
     <div>
