@@ -35,7 +35,6 @@ export default function GeoGuesserContainer() {
 
   const increaseStage = useCallback(() => {
     let currentScore = parseFloat(loadItem('geoScore')) || 0;
-    console.log('currentScore', currentScore);
     if ((stage * 2) % 2 === 0 && currentScore == 0) {
       alert('마커를 지도에 표시해주세요.');
     } else {

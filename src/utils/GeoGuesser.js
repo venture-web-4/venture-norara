@@ -58,11 +58,9 @@ export function KakaoMapScript(reset = false) {
   let mouse_marker;
   kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     let coord = mouseEvent.latLng;
-    console.log(coord.toString());
     let stage = loadItem('geoStage');
     let index = parseInt(stage) === 0 ? 0 : parseInt(stage) - 1;
     let answer_coord = image_locations[index];
-    console.log(image_locations[index]);
 
     var polyline = new kakao.maps.Polyline({
       path: [coord, answer_coord],
@@ -73,7 +71,6 @@ export function KakaoMapScript(reset = false) {
     });
 
     let score = polyline.getLength();
-    console.log('길이 : ' + score);
     saveItem('geoScore', score);
 
     if (mouse_marker) mouse_marker.setMap(null);
@@ -88,11 +85,10 @@ export function KakaoMapScript(reset = false) {
   // if button is clicked
   let icon;
   button.addEventListener('click', () => {
-    // delay for 1 second, and execute the following code
+    // delay for 0.1 second, and execute the following code
 
     const showAnswer = () => {
       let stage = parseFloat(loadItem('geoStage'));
-      console.log('stagestagestage', stage);
       if ((stage * 2) % 2 === 1) {
         if (icon) icon.setMap(null);
         icon = new kakao.maps.CustomOverlay({

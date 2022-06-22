@@ -20,7 +20,7 @@ export default function Category() {
         <StyledLink to='/ufogame'>
           <CategoryItem
             title={'UFO 게임'}
-            desc={'UFO로부터 뚱이를ㅤ구출해보세요!'}
+            desc={'UFO로부터 뚱이를 구출해보세요!'}
             bgImg={'../../../img/ddoong.png'}
             bgSize={'100% 100%'}
           />
@@ -36,7 +36,7 @@ export default function Category() {
         <StyledLink to='/catword'>
           <CategoryItem
             title={'ㅤ냥이와ㅤㅤ아무말ㅤ끝말잇기'}
-            desc={'제맘대로인 고양이와 ㅤㅤ끝말잇기 대결!ㅤㅤ이길 수 있을까요?'}
+            desc={'제맘대로인 고양이와 끝말잇기 대결! 이길 수 있을까요?'}
             bgImg={'../../../img/fatcat.png'}
             bgSize={'100% 100%'}
           />
