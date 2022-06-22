@@ -38,6 +38,8 @@ export default function Gnb() {
     if (username) {
       changeDisplayName(username);
       setUserName(auth.currentUser.displayName);
+      saveItem('userName', auth.currentUser.displayName);
+      saveItem('userEmail', auth.currentUser.email);
     }
     setShowModal(false);
   };
