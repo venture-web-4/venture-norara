@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { postScore } from '../../api/score';
+import { loadItem } from '../../utils/storage';
 
 const getUrl = word => {
   const display = 2;
@@ -32,21 +34,23 @@ const sendPostApi = async word => {
   }
 };
 
-export const catAnswer = async ({
-  word,
-  setWordList,
-  point,
-  setSound,
-  gameOver,
-}) => {
+export const catAnswer = async (word, setWordList, point, setSound) => {
   // const rawApiAnswer = await sendPostApi(word.charAt(word.length - 1));
   // const apiAnswer = rawApiAnswer[0]['description'].split(' ')[1];
   // console.log(rawApiAnswer[0]);
+  const handlePostScore = async point => {
+    const userName = loadItem('userName');
+    const userEmail = loadItem('userEmail');
+    await postScore(2, point, userName, userEmail);
+    location.reload();
+  };
+
   const apiAnswer = noApi(word);
   if (apiAnswer != '') {
-    if (point === 20) {
-      alert('왜 이렇게 잘하냐옹! 져라 인간!!');
-      gameOver();
+    if (point === 12) {
+      alert(`왜 이렇게 잘하냐옹! 져라 인간!!\n점수: ${point}점`);
+      handlePostScore(12);
+      location.reload();
     } else {
       setTimeout(() => {
         setWordList(prev => prev.concat({ text: apiAnswer, color: 'red' }));
@@ -55,8 +59,8 @@ export const catAnswer = async ({
     }
   } else {
     alert('game over');
-    gameOver();
-    // props로 Postscore 적용했는데 확인 부탁드립니다 죄송합니다
+    handlePostScore(point);
+    location.reload();
   }
 };
 

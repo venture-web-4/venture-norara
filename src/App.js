@@ -18,7 +18,7 @@ export default function App() {
         <Route path='/ufogame' element={<UFOGame />} />
         <Route path='/geoguesser' element={<GeoGuesser />} />
         <Route path='/asteroids' element={<Asteroids />} />
-        <Route path='/catWord' element={<CatWord />} />
+        <Route path='/catword' element={<CatWord />} />
         <Route path='/preasteroids' element={<PreAsteroids />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>

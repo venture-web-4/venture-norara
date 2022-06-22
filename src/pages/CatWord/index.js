@@ -33,6 +33,8 @@ import {
   Title,
 } from './CatWord.Styled';
 import { check } from 'prettier';
+import { loadItem } from '../../utils/storage';
+import { postScore } from '../../api/score';
 
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '고양이', color: 'red' }]);
@@ -48,11 +50,9 @@ export default function CatWord() {
       return;
     }
 
-    console.log(wordList[wordList.length - 1]['text'].slice(-1));
-
     if (point === 12) {
       alert('인간, 끝말잇기 너무 잘한다냥! 같이 놀기 싫다냥!');
-      catAnswer({ word, setWordList, point, setSound });
+      catAnswer(word, setWordList, point, setSound);
     } else {
       if (
         word.length > 1 &&
@@ -61,12 +61,19 @@ export default function CatWord() {
       ) {
         setWordList(wordList.concat({ text: word, color: 'green' }));
         setPoint(prev => prev + 1);
-        catAnswer({ word, setWordList, point, setSound, handlePostScore });
+        catAnswer(word, setWordList, point, setSound);
         setStatus({ time: 6, color: 'black' });
       } else {
         alert('그건 틀렸다냥!');
       }
     }
+  };
+
+  const handlePostScore = async point => {
+    const userName = loadItem('userName');
+    const userEmail = loadItem('userEmail');
+    await postScore(2, point, userName, userEmail);
+    location.reload();
   };
 
   useInterval(() => {
@@ -76,16 +83,10 @@ export default function CatWord() {
   }, 1200);
   // Interval
 
-  const handlePostScore = async point => {
-    await postScore(2, point, userName, userEmail);
-    window.location.href = '/catWord';
-  };
-
   useEffect(() => {
     if (status['time'] === 0) {
       alert(`Game Over 고양이의 승리다냥!`);
       handlePostScore(point);
-      location.reload();
     }
 
     if (status['time'] === 3) {
