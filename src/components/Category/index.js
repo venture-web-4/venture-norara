@@ -33,10 +33,10 @@ export default function Category() {
             bgSize={'100% 100%'}
           />
         </StyledLink>
-        <StyledLink to='/category'>
+        <StyledLink to='/catword'>
           <CategoryItem
-            title={'ㅤ냥이와ㅤ끝말잇기'}
-            desc={'아주 똑똑한 고양이와 끝말잇기 대결! 이길 수 있을까요?'}
+            title={'ㅤ냥이와ㅤㅤ아무말ㅤ끝말잇기'}
+            desc={'제맘대로인 고양이와 ㅤㅤ끝말잇기 대결!ㅤㅤ이길 수 있을까요?'}
             bgImg={'../../../img/fatcat.png'}
             bgSize={'100% 100%'}
           />

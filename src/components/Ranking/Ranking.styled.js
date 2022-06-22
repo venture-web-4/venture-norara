@@ -45,17 +45,14 @@ export const Rankers = styled.div`
   text-overflow: ellipsis;
 
   &:first-child {
-    font-size: 21px;
     color: #ffcf40;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   }
   &:nth-child(2) {
-    font-size: 19px;
     color: #c0c0c0;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   }
   &:nth-child(3) {
-    font-size: 17px;
     color: #cc9553;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   }
