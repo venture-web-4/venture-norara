@@ -6,14 +6,18 @@ const api = word => {
 };
 
 const getUrl = word => {
-  const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
-  return `/api/search?key=${apiKey}&q=${word}&req_type=json`;
+  // const apiKey = process.env.REACT_APP_OPENDICT_API_KEY;
+  // return `/api/search?key=${apiKey}&q=${word}&req_type=json`;
+
+  const display = 2;
+  return `/v1/search/encyc.json?query=${word}&display=${display}`;
 };
 
 const sendRequest = word => {
   return axios({
     url: getUrl(word),
     method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
   }).then(res => console.log(res));
 };
 
