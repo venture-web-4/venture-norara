@@ -25,7 +25,7 @@ export default function EndGameModal({ userName, onClick, score }) {
       <ModalTitleWrapper>
         <ModalImageWin />
         <ModalAnnounce>서울대 탐방 완료!</ModalAnnounce>
-        <ModalAnswer>점수 (평균오차) : {score.toFixed(2)}</ModalAnswer>
+        <ModalAnswer>점수 (평균오차) : {score.toFixed(2)}m</ModalAnswer>
       </ModalTitleWrapper>
       <ButtonWrapper>
         <BasicButton onClick={handleClickTryAgain} text={'다시하기'} />

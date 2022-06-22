@@ -98,10 +98,10 @@ export const RowContainer = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  width: 700px;
-  height: 540px;
+  width: 640px;
+  height: 480px;
   background-image: url('../../../img/mapsnap.png');
-  background-size: 700px 540px;
+  background-size: 640px 480px;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 15px;
@@ -109,8 +109,8 @@ export const ImgWrapper = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  width: 800px;
-  height: 540px;
+  width: 640px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
