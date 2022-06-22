@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getScores } from '../../api/score';
 import LandingButton from '../LandingButton';
 import Ranking from '../Ranking';
 
@@ -21,7 +20,6 @@ import {
 
 import { getScores } from '../../api/score';
 import { getDefaultNormalizer } from '@testing-library/react';
-import { useEffect, useState } from 'react';
 
 export default function LandingHeader() {
   const [rankersOnUFOGame, setRankersOnUFOGame] = useState();

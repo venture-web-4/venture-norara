@@ -9,7 +9,7 @@ import {
   Component3,
   Component4,
 } from '../../components/CatWord/Component';
-import { catAnswer } from '../../components/CatWord/catAnswer';
+import { catAnswer, catAnswerNoApi, checkWord } from '../../components/CatWord/catAnswer';
 
 //Static Source
 import Cat from '../../img/cat.png';
@@ -24,11 +24,12 @@ import {
   StyledBarWrapper,
   StyledGameWrapperPart,
 } from './CatWord.Styled';
+import { check } from 'prettier';
 
 export default function CatWord() {
   const [wordList, setWordList] = useState([{ text: '고양이', color: 'red' }]);
   const [point, setPoint] = useState(0);
-  const [status, setStatus] = useState({ time: 9, color: 'black' });
+  const [status, setStatus] = useState({ time: 6, color: 'black' });
   const [sound, setSound] = useState(false);
 
   const checkWord = word => {
@@ -48,13 +49,13 @@ export default function CatWord() {
     } else {
       if (
         word.length > 1 &&
-        wordList[wordList.length - 1]['text'].slice(-1) === word[0]
-        //api를 통해 체크하는 조건 추가
+        wordList[wordList.length - 1]['text'].slice(-1) === word[0] 
+        // && checkWord(word) (api를 통해 체크하는 조건)
       ) {
         setWordList(wordList.concat({ text: word, color: 'green' }));
         setPoint(prev => prev + 1);
-        catAnswer({ word, setWordList, point, setSound });
-        setStatus({ time: 15, color: 'black' });
+        catAnswerNoApi({ word, setWordList, point, setSound });
+        setStatus({ time: 6, color: 'black' });
       } else {
         alert('그건 틀렸다냥!');
       }
@@ -68,17 +69,6 @@ export default function CatWord() {
   // }, 1200);
 
   useEffect(() => {
-    (async () => {
-      const response = await axios.get(`/v1/search/encyc.json?query=안녕`, {
-        headers: {
-          'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT,
-          'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log('네이버 응답', response.data.items);
-    })();
-
     if (status['time'] === 0) {
       alert(`Game Over 고양이의 승리다냥!
       `);
