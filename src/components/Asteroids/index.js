@@ -95,7 +95,7 @@ export default function AsteroidsContainer() {
         e => {
           for (let restartKey of restartKeys) {
             if (e.key === restartKey) {
-              window.location.href = '/asteroids';
+              location.reload();
               break;
             }
           }
