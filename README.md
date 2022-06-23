@@ -1,5 +1,7 @@
 # 심심할 때 노라라
 
+배포 URL: https://ventureweb-norara.web.app/
+
 22-1 벤처창업 웹 프로그래밍 4조 기말 과제입니다.
 
 ## How to init?
